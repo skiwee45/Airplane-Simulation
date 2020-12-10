@@ -20,6 +20,7 @@
                 <e p="AeroSurfaceEditor.cs" t="Include" />
                 <e p="AircraftGizmos.cs" t="Include" />
                 <e p="AircraftPhysicsDisplaySettings.cs" t="Include" />
+                <e p="ScriptableObjectDrawer.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -29,6 +30,7 @@
               <e p="AutopilotAltitude.cs" t="Include" />
               <e p="AutopilotHeading.cs" t="Include" />
               <e p="FuelManager.cs" t="Include" />
+              <e p="PIDConfig.cs" t="Include" />
               <e p="PIDController.cs" t="Include" />
             </e>
           </e>

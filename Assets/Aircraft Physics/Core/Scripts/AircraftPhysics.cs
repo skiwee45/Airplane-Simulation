@@ -32,7 +32,7 @@ public class AircraftPhysics : MonoBehaviour
             CalculateAerodynamicForces(rb.velocity, rb.angularVelocity, Vector3.zero, 1.2f, rb.worldCenterOfMass);
 
         Vector3 velocityPrediction = PredictVelocity(forceAndTorqueThisFrame.p
-            + transform.forward * thrust * thrustPercent + Physics.gravity * rb.mass);
+            + transform.forward * (thrust * thrustPercent) + Physics.gravity * rb.mass);
         Vector3 angularVelocityPrediction = PredictAngularVelocity(forceAndTorqueThisFrame.q);
 
         BiVector3 forceAndTorquePrediction = 
@@ -42,7 +42,7 @@ public class AircraftPhysics : MonoBehaviour
         rb.AddForce(currentForceAndTorque.p);
         rb.AddTorque(currentForceAndTorque.q);
 
-        rb.AddForce(transform.forward * thrust * thrustPercent);
+        rb.AddForce(transform.forward * (thrust * thrustPercent));
     }
 
     private BiVector3 CalculateAerodynamicForces(Vector3 velocity, Vector3 angularVelocity, Vector3 wind, float airDensity, Vector3 centerOfMass)

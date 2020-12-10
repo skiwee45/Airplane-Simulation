@@ -7,64 +7,71 @@ namespace Aircraft_Physics.Example.Scripts
 {
     public class AirplaneController : MonoBehaviour
     {
-        [SerializeField]
-        List<AeroSurface> controlSurfaces = null;
-        [SerializeField]
-        List<WheelCollider> wheels = null;
+        [SerializeField] private List<AeroSurface> controlSurfaces = null;
+        [SerializeField] private List<WheelCollider> wheels = null;
     
         //Sensitivites
-        [SerializeField] 
-        float thrustControlSensitivity;
-        [SerializeField] 
-        float flapControlSensitivity;
-        [SerializeField]
-        float rollControlSensitivity = 0.2f;
-        [SerializeField]
-        float pitchControlSensitivity = 0.2f;
-        [SerializeField]
-        float yawControlSensitivity = 0.2f;
+        [SerializeField] private float thrustControlSensitivity;
+        [SerializeField] private float flapControlSensitivity;
+        [SerializeField] private float rollControlSensitivity = 0.2f;
+        [SerializeField] private float pitchControlSensitivity = 0.2f;
+        [SerializeField] private float yawControlSensitivity = 0.2f;
 
         //runtime variables
-        [Range(-1, 1)]
-        public float Pitch;
-        [Range(-1, 1)]
-        public float Yaw;
-        [Range(-1, 1)]
-        public float Roll;
-        [Range(0, 1)]
-        public float Flap;
-        [FormerlySerializedAs("thrustPercent")] [Range(0, 1)]
-        public float Thrust;
+        [FormerlySerializedAs("Pitch")] [Range(-1, 1)]
+        public float pitch;
+        [FormerlySerializedAs("Yaw")] [Range(-1, 1)]
+        public float yaw;
+        [FormerlySerializedAs("Roll")] [Range(-1, 1)]
+        public float roll;
+        [FormerlySerializedAs("Flap")] [Range(0, 1)]
+        public float flap;
+        [FormerlySerializedAs("Thrust")] [FormerlySerializedAs("thrustPercent")] [Range(0, 1)]
+        public float thrust;
         public float brakesTorque;
     
         //other refs
-        [SerializeField]
-        Text displayText = null;
+        [SerializeField] private Text displayText = null;
 
-        AircraftPhysics aircraftPhysics;
-        Rigidbody rb;
-        private AutopilotAltitude autopilotAltitude;
+        private AircraftPhysics _aircraftPhysics;
+        private Rigidbody _rb;
+        private AutopilotAltitude _autopilotAltitude;
+        private AutopilotHeading _autopilotHeading;
 
         private void Start()
         {
-            aircraftPhysics = GetComponent<AircraftPhysics>();
-            rb = GetComponent<Rigidbody>();
-            autopilotAltitude = GetComponent<AutopilotAltitude>();
+            _aircraftPhysics = GetComponent<AircraftPhysics>();
+            _rb = GetComponent<Rigidbody>();
+            _autopilotAltitude = GetComponent<AutopilotAltitude>();
+            _autopilotHeading = GetComponent<AutopilotHeading>();
         }
 
         private void OnDisable()
         {
-            Thrust = 0f;
+            thrust = 0f;
+            _autopilotAltitude.enabled = false;
+            _autopilotHeading.enabled = false;
         }
 
         private void Update()
         {
-            if (!autopilotAltitude.enabled)
+            if (_autopilotAltitude.enabled)
             {
-                Pitch = Input.GetAxis("Vertical");
+                pitch += Input.GetAxis("Vertical");
             }
-            Roll = Input.GetAxis("Horizontal");
-            Yaw = Input.GetAxis($"Yaw");
+            else
+            {
+                pitch = Input.GetAxis("Vertical");
+            }
+            if (_autopilotHeading.enabled)
+            {
+                roll += Input.GetAxis("Horizontal");
+            }
+            else
+            {
+                roll = Input.GetAxis("Horizontal");
+            }
+            yaw = Input.GetAxis($"Yaw");
 
             if (Input.GetKeyDown(KeyCode.B))
             {
@@ -80,33 +87,40 @@ namespace Aircraft_Physics.Example.Scripts
 
             if (Input.GetKey(KeyCode.Space))
             {
-                Thrust += thrustControlSensitivity;
-                Thrust = Mathf.Clamp01(Thrust);
+                thrust += thrustControlSensitivity;
+                thrust = Mathf.Clamp01(thrust);
             }
         
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Flap += flapControlSensitivity;
-                Flap = Mathf.Clamp01(Flap);
+                flap += flapControlSensitivity;
+                flap = Mathf.Clamp01(flap);
             }
         
             if (Input.GetKeyDown(KeyCode.V))
             {
-                autopilotAltitude.enabled = !autopilotAltitude.enabled; //flips it
+                _autopilotAltitude.enabled = !_autopilotAltitude.enabled; //flips it
+            }
+            
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                _autopilotHeading.enabled = !_autopilotHeading.enabled; //flips it
             }
 
-            displayText.text = "V: " + ((int)rb.velocity.magnitude).ToString("D3") + " m/s\n"
+            displayText.text = "V: " + ((int)_rb.velocity.magnitude).ToString("D3") + " m/s\n"
             + "Alt: " + ((int)transform.position.y).ToString("D4") + " m\n"
-            + "T: " + (int)(Thrust * 100) + "%\n"
+            + "T: " + (int)(thrust * 100) + "%\n"
             + (brakesTorque > 0 ? "B: ON\n" : "B: OFF\n")
-            + (autopilotAltitude.enabled ? "AP: ON" : "AP: OFF")
-            + "  " + Mathf.Round(autopilotAltitude.GetVerticalSpeed());
+            + (_autopilotAltitude.enabled ? "A: ON" : "A: OFF")
+            + "  " + Mathf.Round(_autopilotAltitude.GetVerticalSpeed())
+            + (_autopilotHeading.enabled ? "H: ON" : "H: OFF")
+            + "  " + Mathf.Round(_autopilotHeading.GETHeading());
         }
 
         private void FixedUpdate()
         {
-            SetControlSurfacesAngles(Pitch, Roll, Yaw, Flap);
-            aircraftPhysics.SetThrustPercent(Thrust);
+            SetControlSurfacesAngles(pitch, roll, yaw, flap);
+            _aircraftPhysics.SetThrustPercent(thrust);
             foreach (var wheel in wheels)
             {
                 wheel.brakeTorque = brakesTorque;
@@ -126,7 +140,7 @@ namespace Aircraft_Physics.Example.Scripts
         {
             foreach (var surface in controlSurfaces)
             {
-                if (surface == null || !surface.IsControlSurface) continue;
+                if (surface || !surface.IsControlSurface) continue;
                 switch (surface.InputType)
                 {
                     case ControlInputType.Pitch:
@@ -148,7 +162,7 @@ namespace Aircraft_Physics.Example.Scripts
         private void OnDrawGizmos()
         {
             if (!Application.isPlaying)
-                SetControlSurfacesAngles(Pitch, Roll, Yaw, Flap);
+                SetControlSurfacesAngles(pitch, roll, yaw, flap);
         }
     }
 }

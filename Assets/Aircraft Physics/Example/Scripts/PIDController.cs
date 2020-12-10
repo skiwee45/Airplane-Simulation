@@ -2,18 +2,18 @@
 
 namespace Aircraft_Physics.Example.Scripts
 {
-    public class PIDController
+    public class PidController
     {
-        private float error = 0;
+        private float _error = 0;
 
-        public void SetConstants(float GainProportional, float GainIntegral, float GainDerivative, float OutputMin,
-            float OutputMax)
+        public void SetConstants(float gainProportional, float gainIntegral, float gainDerivative, float outputMin,
+            float outputMax)
         {
-            this.GainDerivative = GainDerivative;
-            this.GainIntegral = GainIntegral;
-            this.GainProportional = GainProportional;
-            this.OutputMax = OutputMax;
-            this.OutputMin = OutputMin;
+            this.GainDerivative = gainDerivative;
+            this.GainIntegral = gainIntegral;
+            this.GainProportional = gainProportional;
+            this.OutputMax = outputMax;
+            this.OutputMin = outputMin;
         }
         
         public float ControlVariable(float timeSinceLastUpdate)
@@ -21,7 +21,7 @@ namespace Aircraft_Physics.Example.Scripts
             Error = SetPoint - ProcessVariable;
 
             // integral term calculation
-            IntegralTerm += (GainIntegral * error * timeSinceLastUpdate);
+            IntegralTerm += (GainIntegral * _error * timeSinceLastUpdate);
             IntegralTerm = Mathf.Clamp(IntegralTerm, OutputMin, OutputMax);
 
             // derivative term calculation
@@ -29,7 +29,7 @@ namespace Aircraft_Physics.Example.Scripts
             float derivativeTerm = GainDerivative * (dInput / timeSinceLastUpdate);
 
             // proportional term calculation
-            float proportionalTerm = GainProportional * error;
+            float proportionalTerm = GainProportional * _error;
 
             float output = proportionalTerm + IntegralTerm + derivativeTerm;
 
@@ -59,11 +59,11 @@ namespace Aircraft_Physics.Example.Scripts
         public float IntegralTerm { get; private set; } = 0;
         public float Error
         {
-            get { return error; }
+            get { return _error; }
             set
             {
-                ErrorLast = error;
-                error = value;
+                ErrorLast = _error;
+                _error = value;
             }
         }
         public float ErrorLast { get; private set; } = 0;

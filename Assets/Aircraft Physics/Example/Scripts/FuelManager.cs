@@ -10,16 +10,16 @@ namespace Aircraft_Physics.Example.Scripts
         private AirplaneController _controller;
     
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             _controller = GetComponent<AirplaneController>();
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             //fuel calculations
-            fuel += calculateFuel(_controller.Thrust);
+            fuel += CalculateFuel(_controller.thrust);
             if (Input.GetKey(KeyCode.LeftControl))
             {
                 fuel += 0.5f;
@@ -37,13 +37,13 @@ namespace Aircraft_Physics.Example.Scripts
             }
             
         }
-    
+
         /// <summary>
         /// based on engine input calculate how much fuel was lost
         /// </summary>
-        /// <param name="thrustPercent">decimal between 0 and 1, represents engine input</param>
+        /// <param name="thrust"></param>
         /// <returns></returns>
-        public float calculateFuel(float thrust)
+        private static float CalculateFuel(float thrust)
         {
             return thrust * -0.4608f * Time.deltaTime;
         }

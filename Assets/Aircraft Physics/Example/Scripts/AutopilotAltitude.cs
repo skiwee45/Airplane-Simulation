@@ -7,17 +7,14 @@ namespace Aircraft_Physics.Example.Scripts
     public class AutopilotAltitude : MonoBehaviour
     {
         //PID parameters
-        [SerializeField]private float PGain;
-        [SerializeField]private float IGain;
-        [SerializeField]private float DGain;
-        [FormerlySerializedAs("MinOutput")] [SerializeField]private float minOutput;
-        [FormerlySerializedAs("MaxOutput")] [SerializeField]private float maxOutput;
+        [SerializeField] PIDConfig pidConfig;
+        public PIDConfig PidConfig=> pidConfig;
         [Range(-1000, 1000)]
         [SerializeField] private float setPoint;
         [SerializeField] private float output;
 
         //PID object
-        private PIDController _pid;
+        private PidController _pid;
 
         //Other references
         private AirplaneController _controller;
@@ -27,8 +24,8 @@ namespace Aircraft_Physics.Example.Scripts
         private void Awake()
         {
             //setup PID
-            _pid = new PIDController();
-            _pid.SetConstants(PGain, IGain, DGain, minOutput, maxOutput);
+            _pid = new PidController();
+            _pid.SetConstants(pidConfig.gainProportional, pidConfig.gainIntegral, pidConfig.gainDerivative, pidConfig.outputMin, pidConfig.outputMax);
             
             //get other references
             _controller = GetComponent<AirplaneController>();
@@ -51,11 +48,11 @@ namespace Aircraft_Physics.Example.Scripts
         private void FixedUpdate()
         {
             //update parameters (for tuning)
-            _pid.SetConstants(PGain, IGain, DGain, minOutput, maxOutput);
+            _pid.SetConstants(pidConfig.gainProportional, pidConfig.gainIntegral, pidConfig.gainDerivative, pidConfig.outputMin, pidConfig.outputMax);
             
             //run PID controller
             output = -PID_Update(setPoint, GetVerticalSpeed(), Time.fixedDeltaTime) / 10f;
-            _controller.Pitch = output;
+            _controller.pitch = output;
         }
 
         private float PID_Update(float setPoint, float processVariable, float deltaTime)
@@ -72,7 +69,7 @@ namespace Aircraft_Physics.Example.Scripts
 
         public float GetVerticalSpeed()
         {
-            var temp = _aircraft.velocity.y * 196.85f; //m/s converted to ft/min (standard aviation unit in the US)
+            float temp = _aircraft.velocity.y * 196.85f; //m/s converted to ft/min (standard aviation unit in the US)
             return temp;
         }
     }

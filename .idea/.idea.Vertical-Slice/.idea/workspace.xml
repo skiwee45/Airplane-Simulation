@@ -20,7 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d93834b-cca6-4e83-8f57-8da3ab4c2890" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotHeading.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotHeading.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scenes/Cessna 172.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scenes/Cessna 172.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Aileron.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Aileron.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Roll.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Roll.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +102,7 @@
       <updated>1607480798932</updated>
       <workItem from="1607480823087" duration="5208000" />
       <workItem from="1607561623112" duration="8270000" />
-      <workItem from="1607649890437" duration="7602000" />
+      <workItem from="1607649890437" duration="7744000" />
     </task>
     <servers />
   </component>

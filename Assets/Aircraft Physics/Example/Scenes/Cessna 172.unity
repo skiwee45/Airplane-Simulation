@@ -2009,7 +2009,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: 0.07988782, y: 0.000000004287847, z: -3.4364508e-10, w: 0.9968039}
+  m_LocalRotation: {x: 0.07988782, y: -0.000000004287847, z: 3.4364508e-10, w: 0.9968039}
   m_LocalPosition: {x: 0, y: 6.21, z: -14.273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3865,7 +3865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64612e8a1dce450d99214545ca5e24ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pidConfig: {fileID: 0}
+  pidConfig: {fileID: 11400000, guid: c8e9ac62a79364b469c16545cdcf6ee3, type: 2}
   setPoint: 0
   output: 0
   slider: {fileID: 1536266270}
@@ -3894,8 +3894,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea5473c5927408bbd5f221db08b2fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeedPidConfig: {fileID: 11400000, guid: 9a7ed759fa8a52440862c89d8500dd56, type: 2}
-  rollPidConfig: {fileID: 11400000, guid: 0ffade1d594e0b640887ae5dc5bd79a3, type: 2}
+  rollPidConfig: {fileID: 11400000, guid: 9a7ed759fa8a52440862c89d8500dd56, type: 2}
+  aileronPidConfig: {fileID: 11400000, guid: 0ffade1d594e0b640887ae5dc5bd79a3, type: 2}
   slider: {fileID: 411891823}
 --- !u!1 &2098846971
 GameObject:

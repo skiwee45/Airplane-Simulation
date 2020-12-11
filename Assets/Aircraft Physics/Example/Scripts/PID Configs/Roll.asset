@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bef2b079b3143d2a791ac36a09f264f, type: 3}
-  m_Name: Roll
+  m_Name: Turn Speed
   m_EditorClassIdentifier: 
-  gainProportional: 0
+  gainProportional: 0.15
   gainIntegral: 0
   gainDerivative: 0
-  outputMax: 10
-  outputMin: -10
+  outputMax: 60
+  outputMin: -60

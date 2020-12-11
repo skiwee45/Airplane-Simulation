@@ -20,27 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d93834b-cca6-4e83-8f57-8da3ab4c2890" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Config/Lol.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Config/Lol.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/ScriptableObjectDrawer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/ScriptableObjectDrawer.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Roll.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Roll.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Turn Speed.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Turn Speed.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Vertical Speed.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Vertical Speed.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PIDConfig.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PidConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Aileron.asset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Aileron.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/AircraftPhysics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/AircraftPhysics.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/ScriptableObjectDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/ScriptableObjectDrawer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scenes/Cessna 172.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scenes/Cessna 172.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotAltitude.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotAltitude.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotHeading.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotHeading.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/FuelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/FuelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PIDController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PIDController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Roll.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Roll.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Roll.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Roll.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Turn Speed.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PID Configs/Turn Speed.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PidConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PidConfig.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,30 +44,25 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://D:/Unity Projects/Alaska Project/Vertical-Slice/Assets/Aircraft Physics/Core/Scripts/AircraftPhysics.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Unity Projects/Alaska Project/Vertical-Slice/Assets/Aircraft Physics/Example/Scripts/AutopilotAltitude.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/FuelManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Unity Projects/Alaska Project/Vertical-Slice/Assets/Aircraft Physics/Example/Scripts/FuelManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Unity Projects/Alaska Project/Vertical-Slice/Assets/Aircraft Physics/Example/Scripts/AutopilotHeading.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Unity Projects/Alaska Project/Vertical-Slice/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotAltitude.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PIDController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/ScriptableObjectDrawer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/FuelManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PIDController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotHeading.cs" />
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PIDConfig.cs" />
-        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotAltitude.cs" />
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/PIDConfig.cs" />
+        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/AircraftPhysics.cs" />
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/ScriptableObjectDrawer.cs" />
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PidConfig.cs" />
-        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/AircraftPhysics.cs" />
+        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotAltitude.cs" />
+        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/FuelManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotHeading.cs" />
       </list>
     </option>
   </component>
@@ -124,6 +112,7 @@
       <updated>1607480798932</updated>
       <workItem from="1607480823087" duration="5208000" />
       <workItem from="1607561623112" duration="8270000" />
+      <workItem from="1607649890437" duration="7216000" />
     </task>
     <servers />
   </component>

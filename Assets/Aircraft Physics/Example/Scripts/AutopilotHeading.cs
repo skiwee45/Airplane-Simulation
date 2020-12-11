@@ -6,28 +6,36 @@ namespace Aircraft_Physics.Example.Scripts
     public class AutopilotHeading : MonoBehaviour
     {
         //Calculation parameters
+        [SerializeField]
         private float _targetHeading;
+        [SerializeField]
         private float _targetTurningSpeed;
-        private float _targetPlaneRoll;
+        [SerializeField] 
         private float _currentTurnSpeed;
+        [SerializeField]
+        private float _targetPlaneRoll;
+        [SerializeField]
+        private float _currentRoll;
+        [SerializeField]
         private float _aileronOutput;
-        private float TurnSpeed
-        {
-            get => _currentTurnSpeed;
-            set
-            {
-                TurnSpeedLast = _currentTurnSpeed;
-                _currentTurnSpeed = value;
-            }
-        }
 
-        private float TurnSpeedLast { get; set; } = 0;
+        // private Quaternion Rotation
+        // {
+        //     get => currentRotation;
+        //     set
+        //     {
+        //         RotationLast = currentRotation;
+        //         currentRotation = value;
+        //     }
+        // }
+        //
+        // private Quaternion RotationLast { get; set; }
         
         //PID parameters
-        [SerializeField] private PIDConfig turnSpeedPidConfig, rollPidConfig;
+        [SerializeField] private PidConfig rollPidConfig, aileronPidConfig;
 
         //PID object
-        private PidController _controlSurfacePid, _rollPid;
+        private PidController _aileronPidController, _rollPid;
 
         //Other references
         private AirplaneController _controller;
@@ -37,10 +45,10 @@ namespace Aircraft_Physics.Example.Scripts
         private void Awake()
         {
             //setup PID
-            _controlSurfacePid = new PidController();
-            _controlSurfacePid.SetConstants(turnSpeedPidConfig.gainProportional, turnSpeedPidConfig.gainIntegral, turnSpeedPidConfig.gainDerivative, turnSpeedPidConfig.outputMin, turnSpeedPidConfig.outputMax);
             _rollPid = new PidController();
-            _rollPid.SetConstants(rollPidConfig.gainProportional, rollPidConfig.gainIntegral, rollPidConfig.gainDerivative, rollPidConfig.outputMin, rollPidConfig.outputMax);
+            _rollPid.SetConstants(aileronPidConfig.gainProportional, aileronPidConfig.gainIntegral, aileronPidConfig.gainDerivative, aileronPidConfig.outputMin, aileronPidConfig.outputMax);
+            _aileronPidController = new PidController();
+            _aileronPidController.SetConstants(rollPidConfig.gainProportional, rollPidConfig.gainIntegral, rollPidConfig.gainDerivative, rollPidConfig.outputMin, rollPidConfig.outputMax);
 
             //get other references
             _controller = GetComponent<AirplaneController>();
@@ -52,7 +60,7 @@ namespace Aircraft_Physics.Example.Scripts
 
         private void OnEnable()
         {
-            _controlSurfacePid.Reset();
+            _aileronPidController.Reset();
         }
 
         private void Update()
@@ -63,7 +71,7 @@ namespace Aircraft_Physics.Example.Scripts
         private void FixedUpdate()
         {
             //update parameters (for tuning)
-            _controlSurfacePid.SetConstants(turnSpeedPidConfig.gainProportional, turnSpeedPidConfig.gainIntegral, turnSpeedPidConfig.gainDerivative, turnSpeedPidConfig.outputMin, turnSpeedPidConfig.outputMax);
+            _aileronPidController.SetConstants(aileronPidConfig.gainProportional, aileronPidConfig.gainIntegral, aileronPidConfig.gainDerivative, aileronPidConfig.outputMin, aileronPidConfig.outputMax);
             _rollPid.SetConstants(rollPidConfig.gainProportional, rollPidConfig.gainIntegral, rollPidConfig.gainDerivative, rollPidConfig.outputMin, rollPidConfig.outputMax);
 
             //calculations
@@ -71,7 +79,7 @@ namespace Aircraft_Physics.Example.Scripts
 
             //run double PID controllers
             _targetPlaneRoll = PID_Update(_rollPid, _targetTurningSpeed, GETTurnSpeed(), Time.fixedDeltaTime);
-            _aileronOutput = -PID_Update(_controlSurfacePid, _targetPlaneRoll, GETRoll(), Time.fixedDeltaTime) / 10f;
+            _aileronOutput = PID_Update(_aileronPidController, _targetPlaneRoll, GETRoll(), Time.fixedDeltaTime);
             
             //put final output into controller
             _controller.roll = _aileronOutput;
@@ -141,22 +149,24 @@ namespace Aircraft_Physics.Example.Scripts
         
         public float GETTurnSpeed()
         {
-            TurnSpeed = GETHeading();
-            float temp = CalcAngularVelocity(TurnSpeed, TurnSpeedLast); //this is its y axis turning angular velocity in degrees per second
-            return (float) System.Math.Round(temp * 60f, 2); //rounds it to a float with 1 decimal point
+            _currentTurnSpeed = _aircraft.angularVelocity.y * Mathf.Rad2Deg;
+            return (float) System.Math.Round(_currentTurnSpeed, 2); //rounds it to a float with 2 decimal points
         }
         
         public float GETRoll()
         {
-            return _aircraft.rotation.eulerAngles.z;
+            _currentRoll = NormalizeEulerAngle(transform.eulerAngles.z);
+            return _currentRoll;
         }
-        
-        public static float CalcAngularVelocity(float currentAngle, float lastAngle)
-        {
-            float deltaRotation = currentAngle - lastAngle;
-            float velocity = deltaRotation / Time.fixedDeltaTime;
 
-            return velocity;
+        public float NormalizeEulerAngle(float angle)
+        {
+            var normalizedAngle = -angle;
+            if (angle > 180)
+            {
+                normalizedAngle = 360 - angle;
+            }
+            return normalizedAngle;
         }
     }
 }

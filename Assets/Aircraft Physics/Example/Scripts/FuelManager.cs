@@ -45,7 +45,7 @@ namespace Aircraft_Physics.Example.Scripts
         /// <returns></returns>
         private static float CalculateFuel(float thrust)
         {
-            return thrust * -0.4608f * Time.deltaTime;
+            return thrust * -0.004608f * Time.deltaTime;
         }
     }
 }

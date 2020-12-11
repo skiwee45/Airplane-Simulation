@@ -7,8 +7,7 @@ namespace Aircraft_Physics.Example.Scripts
     public class AutopilotAltitude : MonoBehaviour
     {
         //PID parameters
-        [SerializeField] PIDConfig pidConfig;
-        public PIDConfig PidConfig=> pidConfig;
+        [SerializeField] private PidConfig pidConfig;
         [Range(-1000, 1000)]
         [SerializeField] private float setPoint;
         [SerializeField] private float output;

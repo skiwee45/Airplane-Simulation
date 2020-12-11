@@ -3,7 +3,7 @@
 namespace Aircraft_Physics.Example.Scripts
 {
     [CreateAssetMenu(fileName = "PIDConfig", menuName = "PID Config")]
-    public class PIDConfig : ScriptableObject
+    public class PidConfig : ScriptableObject
     {
         public float gainProportional = 0.1f;
         public float gainIntegral = 0.1f;

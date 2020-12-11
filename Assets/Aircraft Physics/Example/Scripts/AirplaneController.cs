@@ -18,15 +18,15 @@ namespace Aircraft_Physics.Example.Scripts
         [SerializeField] private float yawControlSensitivity = 0.2f;
 
         //runtime variables
-        [FormerlySerializedAs("Pitch")] [Range(-1, 1)]
+        [Range(-1, 1)]
         public float pitch;
-        [FormerlySerializedAs("Yaw")] [Range(-1, 1)]
+        [Range(-1, 1)]
         public float yaw;
-        [FormerlySerializedAs("Roll")] [Range(-1, 1)]
+        [Range(-1, 1)]
         public float roll;
-        [FormerlySerializedAs("Flap")] [Range(0, 1)]
+        [Range(0, 1)]
         public float flap;
-        [FormerlySerializedAs("Thrust")] [FormerlySerializedAs("thrustPercent")] [Range(0, 1)]
+        [Range(0, 1)]
         public float thrust;
         public float brakesTorque;
     
@@ -140,7 +140,7 @@ namespace Aircraft_Physics.Example.Scripts
         {
             foreach (var surface in controlSurfaces)
             {
-                if (surface || !surface.IsControlSurface) continue;
+                if (surface is null || !surface.IsControlSurface) continue;
                 switch (surface.InputType)
                 {
                     case ControlInputType.Pitch:

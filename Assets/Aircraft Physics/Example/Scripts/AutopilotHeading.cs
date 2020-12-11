@@ -6,31 +6,13 @@ namespace Aircraft_Physics.Example.Scripts
     public class AutopilotHeading : MonoBehaviour
     {
         //Calculation parameters
-        [SerializeField]
         private float _targetHeading;
-        [SerializeField]
         private float _targetTurningSpeed;
-        [SerializeField] 
         private float _currentTurnSpeed;
-        [SerializeField]
         private float _targetPlaneRoll;
-        [SerializeField]
         private float _currentRoll;
-        [SerializeField]
         private float _aileronOutput;
 
-        // private Quaternion Rotation
-        // {
-        //     get => currentRotation;
-        //     set
-        //     {
-        //         RotationLast = currentRotation;
-        //         currentRotation = value;
-        //     }
-        // }
-        //
-        // private Quaternion RotationLast { get; set; }
-        
         //PID parameters
         [SerializeField] private PidConfig rollPidConfig, aileronPidConfig;
 
@@ -155,16 +137,16 @@ namespace Aircraft_Physics.Example.Scripts
         
         public float GETRoll()
         {
-            _currentRoll = NormalizeEulerAngle(transform.eulerAngles.z);
+            _currentRoll = NormalizeEulerAngle(-transform.eulerAngles.z);
             return _currentRoll;
         }
 
         public float NormalizeEulerAngle(float angle)
         {
-            var normalizedAngle = -angle;
+            var normalizedAngle = angle;
             if (angle > 180)
             {
-                normalizedAngle = 360 - angle;
+                normalizedAngle = angle - 360;
             }
             return normalizedAngle;
         }

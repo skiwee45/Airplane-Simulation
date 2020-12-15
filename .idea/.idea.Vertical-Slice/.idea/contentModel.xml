@@ -14,6 +14,8 @@
               <e p="AeroSurfaceConfig.cs" t="Include" />
               <e p="AircraftPhysics.cs" t="Include" />
               <e p="BiVector3.cs" t="Include" />
+              <e p="ColliderDensity.cs" t="Include" />
+              <e p="CustomCenterOfMass.cs" t="Include" />
               <e p="Editor" t="Include">
                 <e p="AeroSurfaceConfigDrawer.cs" t="Include" />
                 <e p="AeroSurfaceConfigEditor.cs" t="Include" />

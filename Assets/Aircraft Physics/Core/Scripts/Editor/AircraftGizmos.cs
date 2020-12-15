@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 using System;
+using Aircraft_Physics.Core.Scripts;
 using UnityEditor;
 using UnityEngine;
 

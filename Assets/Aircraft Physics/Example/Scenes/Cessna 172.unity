@@ -2009,7 +2009,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: 0.07988782, y: -0.000000004287847, z: 3.4364508e-10, w: 0.9968039}
+  m_LocalRotation: {x: 0.07988782, y: 0.000000004287847, z: -3.4364508e-10, w: 0.9968039}
   m_LocalPosition: {x: 0, y: 6.21, z: -14.273}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3647,6 +3647,7 @@ GameObject:
   - component: {fileID: 2030733530}
   - component: {fileID: 2030733529}
   - component: {fileID: 2030733528}
+  - component: {fileID: 2030733533}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -3738,6 +3739,20 @@ CapsuleCollider:
   m_Height: 2.89
   m_Direction: 2
   m_Center: {x: 0, y: 1.1, z: 1.43}
+--- !u!114 &2030733533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030733526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 10
+  collider: {fileID: 2030733531}
 --- !u!1 &2066979578
 GameObject:
   m_ObjectHideFlags: 0
@@ -3753,6 +3768,7 @@ GameObject:
   - component: {fileID: 2066979584}
   - component: {fileID: 2066979583}
   - component: {fileID: 2066979585}
+  - component: {fileID: 2066979586}
   m_Layer: 0
   m_Name: Aircraft
   m_TagString: Untagged
@@ -3897,6 +3913,18 @@ MonoBehaviour:
   rollPidConfig: {fileID: 11400000, guid: 9a7ed759fa8a52440862c89d8500dd56, type: 2}
   aileronPidConfig: {fileID: 11400000, guid: 0ffade1d594e0b640887ae5dc5bd79a3, type: 2}
   slider: {fileID: 411891823}
+--- !u!114 &2066979586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066979578}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7127f462c784b074eb77ab7190e9be26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2098846971
 GameObject:
   m_ObjectHideFlags: 0

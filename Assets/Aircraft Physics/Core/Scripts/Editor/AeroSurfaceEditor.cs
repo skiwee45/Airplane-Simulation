@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Aircraft_Physics.Core.Scripts;
+using UnityEngine;
 using UnityEditor;
 
 [CustomEditor(typeof(AeroSurface)), CanEditMultipleObjects()]

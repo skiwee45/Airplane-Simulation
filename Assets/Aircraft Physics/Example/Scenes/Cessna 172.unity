@@ -3648,6 +3648,10 @@ GameObject:
   - component: {fileID: 2030733529}
   - component: {fileID: 2030733528}
   - component: {fileID: 2030733533}
+  - component: {fileID: 2030733537}
+  - component: {fileID: 2030733536}
+  - component: {fileID: 2030733535}
+  - component: {fileID: 2030733534}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -3751,6 +3755,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Fusalage Front
+  mass: 10
+  collider: {fileID: 2030733532}
+--- !u!114 &2030733534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030733526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Rudder
+  mass: 10
+  collider: {fileID: 2030733528}
+--- !u!114 &2030733535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030733526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Elevators
+  mass: 10
+  collider: {fileID: 2030733529}
+--- !u!114 &2030733536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030733526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Wings
+  mass: 10
+  collider: {fileID: 2030733530}
+--- !u!114 &2030733537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030733526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Fusalage Back
   mass: 10
   collider: {fileID: 2030733531}
 --- !u!1 &2066979578

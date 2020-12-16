@@ -8,6 +8,7 @@ namespace Aircraft_Physics.Core.Scripts
     [RequireComponent(typeof(Collider))]
     public class ColliderDensity : MonoBehaviour
     {
+        public string name;
         public float mass;
         public Vector3 Center { get; private set; }
         [SerializeField] private Collider collider = null;

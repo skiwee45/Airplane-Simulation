@@ -20,22 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d93834b-cca6-4e83-8f57-8da3ab4c2890" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/ColliderDensity.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/ColliderDensity.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/CustomCenterOfMass.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/AeroSurface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/AeroSurface.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/AeroSurfaceConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/AeroSurfaceConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/AircraftPhysics.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/AircraftPhysics.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/BiVector3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/BiVector3.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/AeroSurfaceConfigDrawer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/AeroSurfaceConfigDrawer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/AeroSurfaceConfigEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/AeroSurfaceConfigEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/AeroSurfaceEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/AeroSurfaceEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/AircraftGizmos.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/AircraftGizmos.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/ColliderDensity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/ColliderDensity.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/CustomCenterOfMass.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/CustomCenterOfMass.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scenes/Cessna 172.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scenes/Cessna 172.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +107,7 @@
       <workItem from="1607561623112" duration="8270000" />
       <workItem from="1607649890437" duration="7744000" />
       <workItem from="1608000907173" duration="3972000" />
+      <workItem from="1608086401776" duration="1751000" />
     </task>
     <servers />
   </component>

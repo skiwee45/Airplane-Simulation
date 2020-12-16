@@ -1,28 +1,39 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
+using UnityEngine;
 
 namespace Aircraft_Physics.Core.Scripts
 {
     [RequireComponent(typeof(Rigidbody))]
     public class CustomCenterOfMass : MonoBehaviour
     {
-        private ColliderDensity[] _colliderDensities;
+        private List<ColliderDensity> _colliderDensities;
 
-        private float _mass;
-        private Vector3 _center;
+        private float _totalMass;
+        private Vector3 _weightedCenter;
 
         private Vector3 _centerOfMass;
         // Start is called before the first frame update
         private void Start()
         {
-            _colliderDensities = GetComponentsInChildren<ColliderDensity>();
+            //gets both the colliders in children and in self
+            _colliderDensities = GetComponentsInChildren<ColliderDensity>().ToList();
+            var collidersOnSelf = GetComponents<ColliderDensity>();
+            foreach (var colliderDensity in collidersOnSelf)
+            {
+                _colliderDensities.Add(colliderDensity);
+            }
+            
+            //get the total mass and 
             foreach (var colliderDensity in _colliderDensities)
             {
-                _mass += colliderDensity.mass;
-                _center += colliderDensity.Center;
+                _totalMass += colliderDensity.mass;
+                _weightedCenter += colliderDensity.Center * colliderDensity.mass;
             }
 
-            _centerOfMass = _center / _mass;
-            GetComponent<Rigidbody>().centerOfMass = _centerOfMass;
+            _centerOfMass = _weightedCenter / _totalMass;
+            //GetComponent<Rigidbody>().centerOfMass = _centerOfMass;
         }
     }
 }

@@ -8,32 +8,69 @@ namespace Aircraft_Physics.Core.Scripts
     [RequireComponent(typeof(Rigidbody))]
     public class CustomCenterOfMass : MonoBehaviour
     {
-        private List<ColliderDensity> _colliderDensities;
-
-        private float _totalMass;
-        private Vector3 _weightedCenter;
-
+        public List<ColliderDensity> colliderDensities;
         private Vector3 _centerOfMass;
+        private Rigidbody _rb;
+        
         // Start is called before the first frame update
-        private void Start()
+        private void Awake()
         {
             //gets both the colliders in children and in self
-            _colliderDensities = GetComponentsInChildren<ColliderDensity>().ToList();
+            colliderDensities = GetComponentsInChildren<ColliderDensity>().ToList();
             var collidersOnSelf = GetComponents<ColliderDensity>();
             foreach (var colliderDensity in collidersOnSelf)
             {
-                _colliderDensities.Add(colliderDensity);
+                colliderDensities.Add(colliderDensity);
             }
             
-            //get the total mass and 
-            foreach (var colliderDensity in _colliderDensities)
+            //add update event
+            foreach (var colliderDensity in colliderDensities)
             {
-                _totalMass += colliderDensity.mass;
-                _weightedCenter += colliderDensity.Center * colliderDensity.mass;
+                colliderDensity.MassChanged += UpdateCenterOfMass;
+            }
+            
+            //make sure centers are relative to the gameobject, not the collider gameobject children
+            AdjustColliderCenters(transform, ref colliderDensities);
+            
+            _rb = GetComponent<Rigidbody>();
+
+            UpdateCenterOfMass();
+        }
+
+        private void UpdateCenterOfMass()
+        {
+            //calculations
+            _centerOfMass = CalculateCenterOfMass(colliderDensities, out var totalMass);
+            Debug.Log("UpdateCOM " + totalMass);
+
+            //set COM and Mass
+            //_rb.mass = totalMass;
+            //_rb.centerOfMass = _centerOfMass;
+        }
+
+        public static Vector3 CalculateCenterOfMass(List<ColliderDensity> colliderDensities, out float mass)
+        {
+            var totalMass = 0f;
+            var weightedCenter = new Vector3(0, 0, 0);
+            //get the total mass and weighted center
+            foreach (var colliderDensity in colliderDensities)
+            {
+                totalMass += colliderDensity.GetMass();
+                weightedCenter += colliderDensity.RelativeCenter * colliderDensity.GetMass();
             }
 
-            _centerOfMass = _weightedCenter / _totalMass;
-            //GetComponent<Rigidbody>().centerOfMass = _centerOfMass;
+            mass = totalMass;
+            return weightedCenter / mass;
+        }
+
+        public static void AdjustColliderCenters(Transform origin, ref List<ColliderDensity> colliderDensities)
+        {
+            foreach (var colliderDensity in colliderDensities)
+            {
+                var globalLocation = colliderDensity.transform.TransformPoint(colliderDensity.Center);
+                var relativeLocation = origin.InverseTransformPoint(globalLocation);
+                colliderDensity.RelativeCenter = relativeLocation;
+            }
         }
     }
 }

@@ -55,19 +55,11 @@ namespace Aircraft_Physics.Example.Scripts
 
         private void Update()
         {
-            if (_autopilotAltitude.enabled)
-            {
-                pitch += Input.GetAxis("Vertical");
-            }
-            else
+            if (!_autopilotAltitude.enabled)
             {
                 pitch = Input.GetAxis("Vertical");
             }
-            if (_autopilotHeading.enabled)
-            {
-                roll += Input.GetAxis("Horizontal");
-            }
-            else
+            if (!_autopilotHeading.enabled)
             {
                 roll = Input.GetAxis("Horizontal");
             }

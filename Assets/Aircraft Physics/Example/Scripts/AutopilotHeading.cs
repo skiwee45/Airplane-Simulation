@@ -90,8 +90,8 @@ namespace Aircraft_Physics.Example.Scripts
         /// <returns>target turn speed in degrees per second: between 6 d/s and 1 d/s</returns>
         private static float CalcTargetTurnSpeed(float headingError)
         {
-            var targetSpeed = 0.01f * Mathf.Pow(headingError, 2);
-            targetSpeed = Mathf.Clamp(targetSpeed, 1, 6);
+            var targetSpeed = 0.005f * Mathf.Pow(headingError, 2);
+            targetSpeed = Mathf.Clamp(targetSpeed, 1, 4);
             return (headingError >= 0 ? targetSpeed : -targetSpeed);
         }
 
@@ -137,16 +137,20 @@ namespace Aircraft_Physics.Example.Scripts
         
         public float GETRoll()
         {
-            _currentRoll = NormalizeEulerAngle(-transform.eulerAngles.z);
+            _currentRoll = -NormalizeEulerAngle(transform.eulerAngles.z);
             return _currentRoll;
         }
 
         public float NormalizeEulerAngle(float angle)
         {
-            var normalizedAngle = angle;
+            float normalizedAngle;
             if (angle > 180)
             {
                 normalizedAngle = angle - 360;
+            }
+            else
+            {
+                normalizedAngle = angle;
             }
             return normalizedAngle;
         }

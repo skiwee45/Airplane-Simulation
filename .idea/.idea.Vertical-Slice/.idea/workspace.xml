@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d93834b-cca6-4e83-8f57-8da3ab4c2890" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/ColliderDensityType.cs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/ColliderDensityType.cs.meta" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/NullCheck.cs" afterDir="false" />
@@ -225,6 +226,11 @@
       <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scenes/Cessna 172.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scenes/Cessna 172.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/FuelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/FuelManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Vertical-Slice/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotHeading.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotHeading.cs" afterDir="false" />
+>>>>>>> Working-Airplane
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,8 +255,12 @@
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/AircraftPhysics.cs" />
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/Editor/ScriptableObjectDrawer.cs" />
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/PidConfig.cs" />
-        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" />
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotAltitude.cs" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/FuelManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AirplaneController.cs" />
+>>>>>>> Working-Airplane
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Example/Scripts/AutopilotHeading.cs" />
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/ColliderType.cs" />
         <option value="$PROJECT_DIR$/Assets/Aircraft Physics/Core/Scripts/ColliderDensityType.cs" />

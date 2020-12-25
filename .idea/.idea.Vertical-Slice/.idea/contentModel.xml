@@ -29,6 +29,7 @@
               <e p="AirplaneController.cs" t="Include" />
               <e p="AutopilotAltitude.cs" t="Include" />
               <e p="AutopilotHeading.cs" t="Include" />
+              <e p="Death.cs" t="Include" />
               <e p="FuelManager.cs" t="Include" />
               <e p="PIDConfig.cs" t="Include" />
               <e p="PIDController.cs" t="Include" />

@@ -29,7 +29,6 @@ namespace Aircraft_Physics.Core.Scripts
         [SerializeField]
         private float minMass;
         public float GetMinMass() => minMass;
-
         public void SetMinMass(float value)
         {
             minMass = Mathf.Clamp(value, Mathf.NegativeInfinity, maxMass);
@@ -39,51 +38,53 @@ namespace Aircraft_Physics.Core.Scripts
         [SerializeField]
         private float maxMass;
         public float GetMaxMass() => maxMass;
-
         public void SetMaxMass(float value)
         {
             maxMass = Mathf.Clamp(value, minMass, Mathf.Infinity);
             mass = Mathf.Clamp(mass, minMass, maxMass);
         }
 
-        public Vector3 Center { get; private set; }
-        public Vector3 RelativeCenter { get; set; }
+        [field: SerializeField]
+        public Vector3 LocalCenter { get; private set; }
+        public Vector3 Center { get; set; }
 
         [SerializeField] private Collider assignedCollider = null;
         
         //event
-        public UnityEvent massChanged;
-
         public delegate void ChangeMass();
         public event ChangeMass MassChanged;
 
         private void Start()
         {
-            massChanged = new UnityEvent();
-            
-            if (assignedCollider.IsNull())
+            if (!assignedCollider.IsNull())
             {
-                assignedCollider = GetComponent<Collider>();
+                LocalCenter = GetCenterFromCollider(assignedCollider);
             }
+        }
 
-            switch (assignedCollider)
+        private Vector3 GetCenterFromCollider(Collider collider)
+        {
+            Vector3 center;
+            switch (collider)
             {
                 case BoxCollider boxCollider:
-                    Center = boxCollider.center;
+                    center = boxCollider.center;
                     break;
                 case CapsuleCollider capsuleCollider:
-                    Center = capsuleCollider.center;
+                    center = capsuleCollider.center;
                     break;
                 case SphereCollider sphereCollider:
-                    Center = sphereCollider.center;
+                    center = sphereCollider.center;
                     break;
                 case WheelCollider wheelCollider:
-                    Center = wheelCollider.center;
+                    center = wheelCollider.center;
                     break;
                 default:
-                    Center = assignedCollider.bounds.center;
+                    center = collider.bounds.center;
                     break;
             }
+
+            return center;
         }
     }
 }

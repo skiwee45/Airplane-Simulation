@@ -56,7 +56,7 @@ namespace Aircraft_Physics.Core.Scripts
             foreach (var colliderDensity in colliderDensities)
             {
                 totalMass += colliderDensity.GetMass();
-                weightedCenter += colliderDensity.RelativeCenter * colliderDensity.GetMass();
+                weightedCenter += colliderDensity.Center * colliderDensity.GetMass();
             }
 
             mass = totalMass;
@@ -67,9 +67,9 @@ namespace Aircraft_Physics.Core.Scripts
         {
             foreach (var colliderDensity in colliderDensities)
             {
-                var globalLocation = colliderDensity.transform.TransformPoint(colliderDensity.Center);
+                var globalLocation = colliderDensity.transform.TransformPoint(colliderDensity.LocalCenter);
                 var relativeLocation = origin.InverseTransformPoint(globalLocation);
-                colliderDensity.RelativeCenter = relativeLocation;
+                colliderDensity.Center = relativeLocation;
             }
         }
     }

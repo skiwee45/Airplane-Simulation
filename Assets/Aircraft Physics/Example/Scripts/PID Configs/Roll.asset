@@ -15,5 +15,5 @@ MonoBehaviour:
   gainProportional: 0.5
   gainIntegral: 0.15
   gainDerivative: 0.05
-  outputMax: 60
-  outputMin: -60
+  outputMax: 45
+  outputMin: -45

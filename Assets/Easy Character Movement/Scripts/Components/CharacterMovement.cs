@@ -651,7 +651,7 @@ namespace ECM.Components
 
             var topSphereCenter = center + Vector3.up * height;
             var bottomSphereCenter = center - Vector3.up * height;
-
+            
             var top = position + rotation * topSphereCenter;
             var bottom = position + rotation * bottomSphereCenter;
 

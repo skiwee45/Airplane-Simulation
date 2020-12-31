@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
-using UnityEngine;
 using Pixelplacement;
+using UnityEngine;
 
-namespace Aircraft_Physics.Core.Scripts
+namespace Aircraft_Physics.Core.Scripts.CenterOfMass
 {
     [RequireComponent(typeof(CustomCenterOfMass))]
     public class VariableMassManager : Singleton<VariableMassManager>
@@ -13,7 +11,7 @@ namespace Aircraft_Physics.Core.Scripts
         private CustomCenterOfMass _customCenterOfMass;
         private Dictionary<ColliderDensityType, ColliderDensity> _colliderDensities;
 
-        private void Awake()
+        private void Start()
         {
             _customCenterOfMass = GetComponent<CustomCenterOfMass>();
             _colliderDensities = _customCenterOfMass.colliderDensities.ToDictionary(colliderDensity => colliderDensity.colliderType);
@@ -21,7 +19,6 @@ namespace Aircraft_Physics.Core.Scripts
 
         public void WingMass(float fuel)
         {
-            Debug.Log("WingMass " + fuel);
             SetMass(ColliderDensityType.Wings, fuel * MassScalarType.Fuel);
         }
 

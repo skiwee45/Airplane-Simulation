@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
 using UnityEngine;
 
-namespace Aircraft_Physics.Core.Scripts
+namespace Aircraft_Physics.Core.Scripts.CenterOfMass
 {
     [RequireComponent(typeof(Rigidbody))]
     public class CustomCenterOfMass : MonoBehaviour
@@ -11,27 +10,29 @@ namespace Aircraft_Physics.Core.Scripts
         public List<ColliderDensity> colliderDensities;
         private Vector3 _centerOfMass;
         private Rigidbody _rb;
-        
-        // Start is called before the first frame update
+
+        //events
+
+        public delegate void OnFieldsChanged();
+        public event OnFieldsChanged OnUpdateCenterOfMass;
+
         private void Awake()
         {
-            //gets both the colliders in children and in self
+            //gets colliderDensities in children and in self
             colliderDensities = GetComponentsInChildren<ColliderDensity>().ToList();
             var collidersOnSelf = GetComponents<ColliderDensity>();
             foreach (var colliderDensity in collidersOnSelf)
             {
                 colliderDensities.Add(colliderDensity);
             }
-            
-            //add update event
+
+            //add events
             foreach (var colliderDensity in colliderDensities)
             {
-                colliderDensity.MassChanged += UpdateCenterOfMass;
+                colliderDensity.OnParametersChanged += UpdateCenterOfMass;
+                colliderDensity.SetupEvent(this);
             }
-            
-            //make sure centers are relative to the gameobject, not the collider gameobject children
-            AdjustColliderCenters(transform, ref colliderDensities);
-            
+
             _rb = GetComponent<Rigidbody>();
 
             UpdateCenterOfMass();
@@ -39,13 +40,20 @@ namespace Aircraft_Physics.Core.Scripts
 
         private void UpdateCenterOfMass()
         {
+            if (OnUpdateCenterOfMass != null)
+            {
+                OnUpdateCenterOfMass();
+            }
+            //make sure centers are relative to the gameobject, not the collider gameobject children
+            GlobalToLocalColliderCenters(transform, ref colliderDensities);
+
             //calculations
             _centerOfMass = CalculateCenterOfMass(colliderDensities, out var totalMass);
             Debug.Log("UpdateCOM " + totalMass);
 
             //set COM and Mass
-            //_rb.mass = totalMass;
-            //_rb.centerOfMass = _centerOfMass;
+            _rb.mass = totalMass;
+            _rb.centerOfMass = _centerOfMass;
         }
 
         public static Vector3 CalculateCenterOfMass(List<ColliderDensity> colliderDensities, out float mass)
@@ -56,20 +64,19 @@ namespace Aircraft_Physics.Core.Scripts
             foreach (var colliderDensity in colliderDensities)
             {
                 totalMass += colliderDensity.GetMass();
-                weightedCenter += colliderDensity.Center * colliderDensity.GetMass();
+                weightedCenter += colliderDensity.RelativeCenter * colliderDensity.GetMass();
             }
 
             mass = totalMass;
             return weightedCenter / mass;
         }
 
-        public static void AdjustColliderCenters(Transform origin, ref List<ColliderDensity> colliderDensities)
+        public static void GlobalToLocalColliderCenters(Transform origin, ref List<ColliderDensity> colliderDensities)
         {
             foreach (var colliderDensity in colliderDensities)
             {
-                var globalLocation = colliderDensity.transform.TransformPoint(colliderDensity.LocalCenter);
-                var relativeLocation = origin.InverseTransformPoint(globalLocation);
-                colliderDensity.Center = relativeLocation;
+                var relativeLocation = colliderDensity.GlobalToLocalPosition(origin, colliderDensity.GlobalCenter);
+                colliderDensity.RelativeCenter = relativeLocation;
             }
         }
     }

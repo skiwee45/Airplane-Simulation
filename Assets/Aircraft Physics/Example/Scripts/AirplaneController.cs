@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Aircraft_Physics.Core.Scripts;
+using Aircraft_Physics.Core.Scripts.CenterOfMass;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -10,7 +11,7 @@ namespace Aircraft_Physics.Example.Scripts
     {
         [SerializeField] private List<AeroSurface> controlSurfaces = null;
         [SerializeField] private List<WheelCollider> wheels = null;
-    
+
         //Sensitivites
         [SerializeField] private float thrustControlSensitivity;
         [SerializeField] private float flapControlSensitivity;
@@ -19,18 +20,13 @@ namespace Aircraft_Physics.Example.Scripts
         [SerializeField] private float yawControlSensitivity = 0.2f;
 
         //runtime variables
-        [Range(-1, 1)]
-        public float pitch;
-        [Range(-1, 1)]
-        public float yaw;
-        [Range(-1, 1)]
-        public float roll;
-        [Range(0, 1)]
-        public float flap;
-        [Range(0, 1)]
-        public float thrust;
+        [Range(-1, 1)] public float pitch;
+        [Range(-1, 1)] public float yaw;
+        [Range(-1, 1)] public float roll;
+        [Range(0, 1)] public float flap;
+        [Range(0, 1)] public float thrust;
         public float brakesTorque;
-    
+
         //other refs
         [SerializeField] private Text displayText = null;
 
@@ -60,10 +56,12 @@ namespace Aircraft_Physics.Example.Scripts
             {
                 pitch = Input.GetAxis("Vertical");
             }
+
             if (!_autopilotHeading.enabled)
             {
                 roll = Input.GetAxis("Horizontal");
             }
+
             yaw = Input.GetAxis($"Yaw");
 
             if (Input.GetKeyDown(KeyCode.B))
@@ -83,31 +81,31 @@ namespace Aircraft_Physics.Example.Scripts
                 thrust += thrustControlSensitivity;
                 thrust = Mathf.Clamp01(thrust);
             }
-        
+
             if (Input.GetKeyDown(KeyCode.F))
             {
                 flap += flapControlSensitivity;
                 flap = Mathf.Clamp01(flap);
             }
-        
+
             if (Input.GetKeyDown(KeyCode.V))
             {
                 _autopilotAltitude.enabled = !_autopilotAltitude.enabled; //flips it
             }
-            
+
             if (Input.GetKeyDown(KeyCode.C))
             {
                 _autopilotHeading.enabled = !_autopilotHeading.enabled; //flips it
             }
 
-            displayText.text = "V: " + ((int)_rb.velocity.magnitude).ToString("D3") + " m/s\n"
-            + "Alt: " + ((int)transform.position.y).ToString("D4") + " m\n"
-            + "T: " + (int)(thrust * 100) + "%\n"
-            + (brakesTorque > 0 ? "B: ON\n" : "B: OFF\n")
-            + (_autopilotAltitude.enabled ? "A: ON" : "A: OFF")
-            + "  " + Mathf.Round(_autopilotAltitude.GetVerticalSpeed())
-            + (_autopilotHeading.enabled ? "H: ON" : "H: OFF")
-            + "  " + Mathf.Round(_autopilotHeading.GETHeading());
+            displayText.text = "V: " + ((int) _rb.velocity.magnitude).ToString("D3") + " m/s\n"
+                               + "Alt: " + ((int) transform.position.y).ToString("D4") + " m\n"
+                               + "T: " + (int) (thrust * 100) + "%\n"
+                               + (brakesTorque > 0 ? "B: ON\n" : "B: OFF\n")
+                               + (_autopilotAltitude.enabled ? "A: ON" : "A: OFF")
+                               + "  " + Mathf.Round(_autopilotAltitude.GetVerticalSpeed())
+                               + (_autopilotHeading.enabled ? "H: ON" : "H: OFF")
+                               + "  " + Mathf.Round(_autopilotHeading.GETHeading());
         }
 
         private void FixedUpdate()

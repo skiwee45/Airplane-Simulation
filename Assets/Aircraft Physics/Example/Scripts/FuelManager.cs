@@ -1,4 +1,5 @@
 ﻿using Aircraft_Physics.Core.Scripts;
+using Aircraft_Physics.Core.Scripts.CenterOfMass;
 using UnityEngine;
 
 namespace Aircraft_Physics.Example.Scripts
@@ -46,11 +47,11 @@ namespace Aircraft_Physics.Example.Scripts
             if (fuel <= 0)
             {
                 _controller.enabled = false;
-                //VariableMassManager.Instance.PeopleMass(0); //if the plane is on, assume the player is on the plane
+                VariableMassManager.Instance.PeopleMass(0); //if the plane is on, assume the player is on the plane
             } else if (Input.GetKeyDown(KeyCode.R)) //enable if has fuel, disabled, and want to start engine
             {
                 _controller.enabled = !_controller.enabled;
-                //VariableMassManager.Instance.PeopleMass(_controller.enabled ? 1 : 0); //if the plane is on, assume the player is on the plane
+                VariableMassManager.Instance.PeopleMass(_controller.enabled ? 1 : 0); //if the plane is on, assume the player is on the plane
             }
         }
 

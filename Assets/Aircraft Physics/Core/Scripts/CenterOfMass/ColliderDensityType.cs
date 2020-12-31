@@ -1,4 +1,4 @@
-﻿namespace Aircraft_Physics.Core.Scripts
+﻿namespace Aircraft_Physics.Core.Scripts.CenterOfMass
 {
     public enum ColliderDensityType
     {

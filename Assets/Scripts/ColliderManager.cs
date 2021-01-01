@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ColliderManager : MonoBehaviour
 {
-    [SerializeField]
-    private Dictionary<AirplaneColliderType, Collider> _colliders;
+    private Dictionary<Collider, ColliderInfo> _colliders;
+
+    public Dictionary<Collider, ColliderInfo> Colliders => _colliders;
 }

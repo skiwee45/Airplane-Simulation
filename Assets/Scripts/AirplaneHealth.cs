@@ -9,16 +9,16 @@ public class AirplaneHealth : CharacterHealth
     //health fields all done in CharacterHealth
     private void OnCollisionEnter(Collision collision)
     {
-        var forceVariable = GetCrashForce(collision);
-        var impactedPartVariable = GetImpactPartDamage(collision);
+        var forceVariable = CalculateCrashForce(collision);
+        var impactedPartVariable = CalculateImpactImportance(collision);
     }
 
-    private float GetImpactPartDamage(Collision collision)
+    private float CalculateImpactImportance(Collision collision)
     {
         var contacts = new List<ContactPoint>(collision.contactCount);
         var numberOfContacts = collision.GetContacts(contacts);
         
-        //find out which collider it hit most
+        //calculate the how much it hit each collider
         var dict = new Dictionary<Collider, int>();
         foreach (var contact in contacts)
         {
@@ -33,10 +33,26 @@ public class AirplaneHealth : CharacterHealth
             }
         }
         
-        //
+        //calculated based on weighted average
+        var total = 0f;
+        var colliderManager = GetComponent<ColliderManager>();
+        if (colliderManager != null)
+        {
+            foreach (var collider in dict)
+            {
+                total += colliderManager.Colliders[collider.Key].importance;
+            }
+        }
+        else
+        {
+            Debug.Log("No colliderManager found on gameobject");
+        }
+        
+        var average = total / numberOfContacts;
+        return average;
     }
 
-    private float GetCrashForce(Collision collision)
+    private float CalculateCrashForce(Collision collision)
     {
         var collisionForce = collision.impulse.magnitude / Time.fixedDeltaTime;
         return collisionForce;

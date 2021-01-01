@@ -9,29 +9,29 @@ namespace Aircraft_Physics.Core.Scripts.CenterOfMass
     public class VariableMassManager : Singleton<VariableMassManager>
     {
         private CustomCenterOfMass _customCenterOfMass;
-        private Dictionary<ColliderDensityType, ColliderDensity> _colliderDensities;
+        private Dictionary<AirplaneColliderType, ColliderDensity> _colliderDensities;
 
         private void Start()
         {
             _customCenterOfMass = GetComponent<CustomCenterOfMass>();
-            _colliderDensities = _customCenterOfMass.colliderDensities.ToDictionary(colliderDensity => colliderDensity.colliderType);
+            _colliderDensities = _customCenterOfMass.colliderDensities.ToDictionary(colliderDensity => colliderDensity.airplaneColliderType);
         }
 
         public void WingMass(float fuel)
         {
-            SetMass(ColliderDensityType.Wings, fuel * MassScalarType.Fuel);
+            SetMass(AirplaneColliderType.Wings, fuel * MassScalarType.Fuel);
         }
 
         public void PeopleMass(int people)
         {
-            SetMass(ColliderDensityType.FuselageFront, people * MassScalarType.Person);
+            SetMass(AirplaneColliderType.FuselageFront, people * MassScalarType.Person);
         }
         
-        private void SetMass(ColliderDensityType colliderType, float extraMass)
+        private void SetMass(AirplaneColliderType airplaneColliderType, float extraMass)
         {
-            var colliderDensity = _colliderDensities[colliderType];
+            var colliderDensity = _colliderDensities[airplaneColliderType];
             if (!colliderDensity) return;
-            Debug.Log("SetMass " + extraMass + "\tColliderType: " + colliderType);
+            Debug.Log("SetMass " + extraMass + "\tColliderType: " + airplaneColliderType);
             colliderDensity.SetMass(extraMass + colliderDensity.GetMinMass());
         }
     }

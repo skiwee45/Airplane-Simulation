@@ -15,8 +15,8 @@
               <e p="AircraftPhysics.cs" t="Include" />
               <e p="BiVector3.cs" t="Include" />
               <e p="CenterOfMass" t="Include">
+                <e p="AirplaneColliderType.cs" t="Include" />
                 <e p="ColliderDensity.cs" t="Include" />
-                <e p="ColliderDensityType.cs" t="Include" />
                 <e p="CustomCenterOfMass.cs" t="Include" />
                 <e p="VariableMassManager.cs" t="Include" />
               </e>
@@ -167,6 +167,11 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="AirplaneHealth.cs" t="Include" />
+          <e p="CharacterHealth.cs" t="Include" />
+          <e p="ColliderManager.cs" t="Include" />
+          <e p="IDamageable.cs" t="Include" />
+          <e p="IHaveHealth.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
         <e p="TutorialInfo" t="Include">

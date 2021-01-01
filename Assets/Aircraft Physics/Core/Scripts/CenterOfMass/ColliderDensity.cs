@@ -6,7 +6,7 @@ namespace Aircraft_Physics.Core.Scripts.CenterOfMass
 {
     public class ColliderDensity : MonoBehaviour
     {
-        public ColliderDensityType colliderType;
+        public AirplaneColliderType airplaneColliderType;
         
         //mass stuff
         [SerializeField]

@@ -1,6 +1,6 @@
 ﻿namespace Aircraft_Physics.Core.Scripts.CenterOfMass
 {
-    public enum ColliderDensityType
+    public enum AirplaneColliderType
     {
         Wings,
         FuselageFront,

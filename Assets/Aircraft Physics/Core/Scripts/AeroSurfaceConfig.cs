@@ -2,7 +2,7 @@
 
 namespace Aircraft_Physics.Core.Scripts
 {
-    [CreateAssetMenu(fileName = "New Aerodynamic Surface Config", menuName = "Aerodynamic Surface Config")]
+    [CreateAssetMenu(fileName = "New Aerodynamic Surface Config", menuName = "Scriptable Object/Aerodynamic Surface Config")]
     public class AeroSurfaceConfig : ScriptableObject
     {
         public float liftSlope = 6.28f;

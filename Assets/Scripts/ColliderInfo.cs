@@ -2,7 +2,7 @@
 using Aircraft_Physics.Core.Scripts.CenterOfMass;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Collider Info", menuName = "Collider Information", order = 0)]
+[CreateAssetMenu(fileName = "New Collider Info", menuName = "Scriptable Object/Collider Information", order = 0)]
 public class ColliderInfo : ScriptableObject
 {
     public AirplaneColliderType type;

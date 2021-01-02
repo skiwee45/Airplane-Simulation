@@ -35,9 +35,6 @@
               <e p="AutopilotAltitude.cs" t="Include" />
               <e p="AutopilotHeading.cs" t="Include" />
               <e p="Death.cs" t="Include" />
-              <e p="Editor" t="Include">
-                <e p="ScriptableObjectDrawer.cs" t="Include" />
-              </e>
               <e p="FuelManager.cs" t="Include" />
               <e p="NullCheck.cs" t="Include" />
               <e p="PIDConfig.cs" t="Include" />
@@ -168,11 +165,45 @@
             </e>
           </e>
         </e>
+        <e p="Rotary Heart" t="Include">
+          <e p="SerializableDictionaryLite" t="Include">
+            <e p="DrawKeyAsPropertyAttribute.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="Constants.cs" t="Include" />
+              <e p="Definer.cs" t="Include" />
+              <e p="DictionaryPropertyDrawer.cs" t="Include" />
+              <e p="PreferencesWindow.cs" t="Include" />
+              <e p="SupportWindow.cs" t="Include" />
+            </e>
+            <e p="Example" t="Include">
+              <e p="DataBaseExample.cs" t="Include" />
+              <e p="NestedDB.cs" t="Include" />
+            </e>
+            <e p="IDAttribute.cs" t="Include" />
+            <e p="References" t="Include">
+              <e p="RequiredReferences.cs" t="Include" />
+            </e>
+            <e p="ReorderableList" t="Include">
+              <e p="ReorderableList.cs" t="Include" />
+            </e>
+            <e p="SerializableDictionaryBase.cs" t="Include" />
+          </e>
+          <e p="Shared" t="Include">
+            <e p="Editor" t="Include">
+              <e p="BaseSupportWindow.cs" t="Include" />
+              <e p="Definer.cs" t="Include" />
+              <e p="RotaryHeart.Editor.asmdef" t="Include" />
+            </e>
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="AirplaneHealth.cs" t="Include" />
           <e p="CharacterHealth.cs" t="Include" />
           <e p="ColliderInfo.cs" t="Include" />
           <e p="ColliderManager.cs" t="Include" />
+          <e p="Editor" t="Include">
+            <e p="ScriptableObjectDrawer.cs" t="Include" />
+          </e>
           <e p="IDamageable.cs" t="Include" />
           <e p="IHaveHealth.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
@@ -197,6 +228,7 @@
       </e>
       <e p="obj" t="ExcludeRecursive" />
       <e p="Packages" t="ExcludeRecursive" />
+      <e p="RotaryHeart.csproj" t="IncludeRecursive" />
       <e p="Temp\bin" t="ExcludeRecursive" />
       <e p="Unity.RenderPipelines.HighDefinition.Config.Runtime.csproj" t="IncludeRecursive" />
       <e p="Vertical-Slice.sln" t="IncludeFlat" />

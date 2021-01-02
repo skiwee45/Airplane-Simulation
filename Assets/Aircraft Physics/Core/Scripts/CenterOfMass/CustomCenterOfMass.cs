@@ -12,7 +12,6 @@ namespace Aircraft_Physics.Core.Scripts.CenterOfMass
         private Rigidbody _rb;
 
         //events
-
         public delegate void OnFieldsChanged();
         public event OnFieldsChanged OnUpdateCenterOfMass;
 

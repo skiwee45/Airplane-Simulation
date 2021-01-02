@@ -1159,6 +1159,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771153307}
   m_CullTransparentMesh: 0
+--- !u!1 &865007360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1606550434539446815, guid: abc181f9d2e85794098b243487833011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2039777418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &865007361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865007360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7f5dae4efc644bda2ed9e45792d4fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliders:
+    reorderableList:
+      canAdd: 1
+      canRemove: 1
+      draggable: 1
+      expandable: 1
+      multipleSelection: 1
+      isExpanded: 0
+      label:
+        m_Text: Keys
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 18
+      footerHeight: 13
+      slideEasing: 0.15
+      verticalSpacing: 2
+      showDefaultBackground: 1
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 0
+    _keyValues:
+    - {fileID: 990764182}
+    _keys:
+    - {fileID: 990764182}
+    _values:
+    - {fileID: 11400000, guid: 27cab3a9606969545b47fb67cec8816f, type: 2}
+--- !u!114 &865007362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865007360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7519daccb6c741c0b3fe7707c7a006b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Health>k__BackingField: 0
+  <MaxHealth>k__BackingField: 0
+  <HealthPercent>k__BackingField: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,6 +1538,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975024901}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!136 &990764182 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 1606550433604650764, guid: abc181f9d2e85794098b243487833011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2039777418}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1128647896
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using Aircraft_Physics.Core.Scripts.CenterOfMass;
+﻿using System;
+using Aircraft_Physics.Core.Scripts.CenterOfMass;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -7,42 +8,35 @@ namespace ColliderAddon
     [CreateAssetMenu(fileName = "New Collider Info", menuName = "Scriptable Object/Collider Information", order = 0)]
     public class ColliderInfo : ScriptableObject
     {
-        public Collider collider;
-        private Transform _transform;
         public AirplaneColliderType type;
-        [Range(0, 100)] public int importance;
+        [Range(0, 100)] 
+        public int importance;
 
         //Center of Mass Related
+        [BoxGroup("Center of Mass")]
         public float minimumMass;
-        public float currentMass;
+        [BoxGroup("Center of Mass")]
         public float maximumMass;
-
-
-        [OnValueChanged("OnValidate")] 
+        
+        [BoxGroup("Center of Mass")]
         public Vector3 localCenter;
-        public Vector3 center;
+        [BoxGroup("Center of Mass")]
         [ReadOnly]
+        public Vector3 center;
+
+        [BoxGroup("Center of Mass")] [ReadOnly]
         public Vector3 globalCenter;
-    
+
+        //event
+        public delegate void OnFieldsChanged();
+        public event OnFieldsChanged OnColliderInfoChanged;
+        
         private void OnValidate()
         {
-            importance = Mathf.Clamp(importance, 0, 100);
-            currentMass = Mathf.Clamp(currentMass, minimumMass, maximumMass);
-            globalCenter = _transform.TransformPoint(localCenter);
+            if (OnColliderInfoChanged != null)
+            {
+                OnColliderInfoChanged();
+            }
         }
-    
-        public void SetDefaultValues()
-        {
-            _transform = collider.gameObject.transform;
-            importance = Mathf.RoundToInt(ColliderUtil.GetColliderVolumePercent(collider));
-        
-            minimumMass = 0f;
-            currentMass = ColliderUtil.GetColliderVolume(collider);
-            maximumMass = currentMass * 2f;
-        
-            localCenter = ColliderUtil.GetColliderCenter(collider);
-        }
-
-        
     }
 }

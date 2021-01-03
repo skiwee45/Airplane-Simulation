@@ -1177,50 +1177,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f5dae4efc644bda2ed9e45792d4fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeEnum:
+    GuidAssignmentFailed: 0
+    GUID: 
+    TypeNameAndAssembly: Aircraft_Physics.Core.Scripts.CenterOfMass.AirplaneColliderType,
+      Assembly-CSharp
+    _suppressLogs: 0
+  colliderInfoFolderPath: Assets/Scripts/ColliderAddon/ColliderInfoConfigs
   colliders:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
-      isExpanded: 0
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues:
-    - {fileID: 990764182}
-    _keys:
-    - {fileID: 990764182}
-    _values:
-    - {fileID: 11400000, guid: 27cab3a9606969545b47fb67cec8816f, type: 2}
---- !u!114 &865007362
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865007360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7519daccb6c741c0b3fe7707c7a006b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <Health>k__BackingField: 0
-  <MaxHealth>k__BackingField: 0
-  <HealthPercent>k__BackingField: 0
+  - name: ColliderInfo #-1300
+    currentMass: 0.76697284
+    collider: {fileID: 2039777427}
+    config: {fileID: 11400000, guid: b464ad42e8dedf64e9fbdd6ada70307a, type: 2}
+  - name: ColliderInfo #-1302
+    currentMass: 1.9231646
+    collider: {fileID: 2039777426}
+    config: {fileID: 11400000, guid: 2756a87afcf928f4fbf63d84659c46ca, type: 2}
+  - name: ColliderInfo #-1304
+    currentMass: 0.43138564
+    collider: {fileID: 2039777425}
+    config: {fileID: 11400000, guid: a85308fd8fa9d6942bc64673237f4941, type: 2}
+  - name: ColliderInfo #-1306
+    currentMass: 1.3896958
+    collider: {fileID: 2039777424}
+    config: {fileID: 11400000, guid: 549b11904bb84154aa0b32e37b2ccdb4, type: 2}
+  - name: ColliderInfo #-1308
+    currentMass: 0
+    collider: {fileID: 2039777423}
+    config: {fileID: 11400000, guid: 51a00e9435dea4a439222e1d9961c21e, type: 2}
+  - name: ColliderInfo #-1310
+    currentMass: 0
+    collider: {fileID: 2039777422}
+    config: {fileID: 11400000, guid: d0632527daa8b1341b3592217f7f75b1, type: 2}
+  - name: ColliderInfo #-1344
+    currentMass: 5
+    collider: {fileID: 2039777421}
+    config: {fileID: 11400000, guid: 39c79fa0fc0aa7641ada352715d1f1af, type: 2}
+  - name: ColliderInfo #-1346
+    currentMass: 5
+    collider: {fileID: 2039777420}
+    config: {fileID: 11400000, guid: 23c02be7d9da5a84f920dd877032a2da, type: 2}
+  - name: ColliderInfo #-1348
+    currentMass: 5
+    collider: {fileID: 2039777419}
+    config: {fileID: 11400000, guid: 00488db3d855a8b4f93834e1f0b3032a, type: 2}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,12 +1538,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975024901}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!136 &990764182 stripped
-CapsuleCollider:
-  m_CorrespondingSourceObject: {fileID: 1606550433604650764, guid: abc181f9d2e85794098b243487833011,
-    type: 3}
-  m_PrefabInstance: {fileID: 2039777418}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1128647896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2981,6 +2975,11 @@ PrefabInstance:
       propertyPath: minMass
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1606550434539446809, guid: abc181f9d2e85794098b243487833011,
+        type: 3}
+      propertyPath: m_Mass
+      value: 19.511219
+      objectReference: {fileID: 0}
     - target: {fileID: 1606550434539446810, guid: abc181f9d2e85794098b243487833011,
         type: 3}
       propertyPath: slider
@@ -3076,8 +3075,65 @@ PrefabInstance:
       propertyPath: minMass
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1606550434539447265, guid: abc181f9d2e85794098b243487833011, type: 3}
+    - {fileID: 1606550434539447271, guid: abc181f9d2e85794098b243487833011, type: 3}
+    - {fileID: 1606550434539447270, guid: abc181f9d2e85794098b243487833011, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: abc181f9d2e85794098b243487833011, type: 3}
+--- !u!146 &2039777419 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 1606550434576788583, guid: abc181f9d2e85794098b243487833011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2039777418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!146 &2039777420 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 1606550434434916093, guid: abc181f9d2e85794098b243487833011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2039777418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!146 &2039777421 stripped
+WheelCollider:
+  m_CorrespondingSourceObject: {fileID: 1606550434382072418, guid: abc181f9d2e85794098b243487833011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2039777418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2039777422 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1606550433604650753, guid: abc181f9d2e85794098b243487833011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2039777418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2039777423 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1606550433604650752, guid: abc181f9d2e85794098b243487833011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2039777418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2039777424 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1606550433604650755, guid: abc181f9d2e85794098b243487833011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2039777418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2039777425 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 1606550433604650754, guid: abc181f9d2e85794098b243487833011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2039777418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2039777426 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 1606550433604650765, guid: abc181f9d2e85794098b243487833011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2039777418}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &2039777427 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 1606550433604650764, guid: abc181f9d2e85794098b243487833011,
+    type: 3}
+  m_PrefabInstance: {fileID: 2039777418}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2098846971
 GameObject:
   m_ObjectHideFlags: 0

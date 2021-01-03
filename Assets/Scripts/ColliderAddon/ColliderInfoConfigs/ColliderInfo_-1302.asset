@@ -10,13 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af88aad5609d486aabeb1071479f8742, type: 3}
-  m_Name: New Collider Info
+  m_Name: ColliderInfo_-1302
   m_EditorClassIdentifier: 
-  collider: {fileID: 0}
   type: 0
   importance: 0
   minimumMass: 0
-  currentMass: 0
   maximumMass: 0
   localCenter: {x: 0, y: 0, z: 0}
   center: {x: 0, y: 0, z: 0}

@@ -7,6 +7,22 @@
       "dependencies": {},
       "url": "https://package.openupm.com"
     },
+    "com.solidalloy.type.references": {
+      "version": "https://github.com/SolidAlloy/ClassTypeReference-for-Unity.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.solidalloy.util": "1.20.1"
+      },
+      "hash": "afb211b4900c2d90ec82a5ed927744d66d766039"
+    },
+    "com.solidalloy.util": {
+      "version": "https://github.com/SolidAlloy/SolidUtilities.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "81fb0376a9c6affaa625123ec7aa96ce78d2ec93"
+    },
     "com.unity.cinemachine": {
       "version": "2.6.3",
       "depth": 0,

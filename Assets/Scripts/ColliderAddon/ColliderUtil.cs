@@ -52,6 +52,7 @@ namespace ColliderAddon
             {
                 case BoxCollider boxCollider:
                     var boxDimensions = boxCollider.size;
+                    Debug.Log("Box Size " + boxDimensions);
                     volume = boxDimensions.x * boxDimensions.y * boxDimensions.z;
                     break;
                 case CapsuleCollider capsuleCollider:

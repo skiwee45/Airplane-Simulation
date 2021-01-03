@@ -197,15 +197,21 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="AirplaneHealth.cs" t="Include" />
-          <e p="CharacterHealth.cs" t="Include" />
-          <e p="ColliderInfo.cs" t="Include" />
-          <e p="ColliderManager.cs" t="Include" />
+          <e p="ColliderAddon" t="Include">
+            <e p="ColliderInfo.cs" t="Include" />
+            <e p="ColliderManager.cs" t="Include" />
+            <e p="ColliderUtil.cs" t="Include" />
+          </e>
           <e p="Editor" t="Include">
             <e p="ScriptableObjectDrawer.cs" t="Include" />
           </e>
-          <e p="IDamageable.cs" t="Include" />
-          <e p="IHaveHealth.cs" t="Include" />
+          <e p="Health" t="Include">
+            <e p="AirplaneHealth.cs" t="Include" />
+            <e p="CharacterHealth.cs" t="Include" />
+            <e p="IDamageable.cs" t="Include" />
+            <e p="IHaveHealth.cs" t="Include" />
+          </e>
+          <e p="ScriptableObjectUtil.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
         <e p="TutorialInfo" t="Include">

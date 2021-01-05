@@ -4,25 +4,30 @@ namespace Health
 {
     public class CharacterHealth : MonoBehaviour, IHaveHealth
     {
-        [field : SerializeField]
-        public virtual float Health { get; private set; }
-        [field : SerializeField]
-        public virtual float MaxHealth { get; private set; }
-
-        [field: SerializeField] 
-        public virtual float HealthPercent { get; private set; } //value from 0-1
+        [SerializeField] 
+        private float health;
+        public virtual float Health => health;
+        
+        [SerializeField] 
+        private float maxHealth;
+        public virtual float MaxHealth => maxHealth;
+        
+        [SerializeField]
+        [Range(0, 1)]
+        private float healthPercent;
+        public virtual float HealthPercent => healthPercent;
 
         private void Awake()
         {
-            Health = MaxHealth;
-            HealthPercent = 100;
+            health = maxHealth;
+            healthPercent = 100;
         }
 
         public virtual void TakeDamage(float damage)
         {
-            Health -= damage;
-            HealthPercent = Health / MaxHealth;
-            if (Health <= 0)
+            health -= damage;
+            healthPercent = health / maxHealth;
+            if (health <= 0)
             {
                 Destroy();
             }

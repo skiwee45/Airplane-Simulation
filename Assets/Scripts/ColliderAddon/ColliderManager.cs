@@ -20,6 +20,9 @@ namespace ColliderAddon
         [SerializeField]
         [Label("ColliderInfo Folder Path")]
         private string colliderInfoFolderPath = "Assets/Scripts/ColliderInfo";
+
+        [SerializeField] 
+        private float defaultDensity = 50f;
         
         [SerializeField]
         [ReorderableList] 
@@ -27,8 +30,10 @@ namespace ColliderAddon
         public List<ExtendedCollider> Colliders => colliders;
     
         //dictionary to make finding colliders easy
-        private Dictionary<int, ExtendedCollider> _extendedColliderDictionary = new Dictionary<int, ExtendedCollider>(0);
-    
+        [SerializeField]
+        private Dictionary<Collider, ExtendedCollider> _extendedColliderDictionary = new Dictionary<Collider, ExtendedCollider>(0);
+        public Dictionary<Collider, ExtendedCollider> ExtendedColliderDictionary => _extendedColliderDictionary;
+        
         private Vector3 _centerOfMass;
         private Rigidbody _rb;
 
@@ -38,7 +43,7 @@ namespace ColliderAddon
             //update COM
             UpdateCenterOfMass();
             //generate dictionary
-            _extendedColliderDictionary = colliders.ToDictionary(info => info.collider.GetInstanceID());
+            _extendedColliderDictionary = colliders.ToDictionary(extendedCollider => extendedCollider.collider);
         }
     
         //gizmos
@@ -66,29 +71,31 @@ namespace ColliderAddon
             var allColliders = GetComponentsInChildren<Collider>();
             foreach (var childCollider in allColliders)
             {
-                var colliderID = childCollider.GetInstanceID();
                 // Debug.Log("Collider ID: " + colliderID);
                 // var temp = childCollider.attachedRigidbody?.mass;
                 // Debug.Log("Nullable Type Test" + temp);
                 // Debug.Log("dict: " + _extendedColliderDictionary);
-                if (_extendedColliderDictionary.ContainsKey(colliderID) || 
+                if (_extendedColliderDictionary.ContainsKey(childCollider) || 
                     childCollider.attachedRigidbody == null)
                 {
                     continue;
                 }
+                
+                //name to use for ColliderInfo and ExtendedCollider
+                var colliderName = childCollider.GetType().Name + " #" + (colliders.Count + 1);
 
                 //create new colliderInfo
                 var newColliderInfo = ScriptableObjectUtil.CreateScriptableObjectInstance<ColliderInfo>
-                    (colliderInfoFolderPath + "/ColliderInfo_" + colliderID + ".asset", false);
+                    (colliderInfoFolderPath + "/ColliderInfo_" + colliderName + ".asset", false);
 
                 //create new extendedCollider
-                var newExtendedCollider =  new ExtendedCollider(newColliderInfo, childCollider, this, true);
+                var newExtendedCollider =  new ExtendedCollider(
+                    colliderName, newColliderInfo, childCollider, this, defaultDensity, true);
                 colliders.Add(newExtendedCollider);
-                
                 newExtendedCollider.OnCreate();
                 
                 //update dictionary
-                _extendedColliderDictionary.Add(colliderID, newExtendedCollider);
+                _extendedColliderDictionary.Add(childCollider, newExtendedCollider);
             }
             //Debug.Log("Colliders List" + colliders);
             UpdateCenterOfMass();

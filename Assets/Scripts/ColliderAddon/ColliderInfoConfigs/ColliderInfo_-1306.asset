@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ColliderInfo_-1306
   m_EditorClassIdentifier: 
   type: 0
-  importance: 0
+  importance: 31
   minimumMass: 0
-  maximumMass: 0
-  localCenter: {x: 0, y: 0, z: 0}
+  maximumMass: 2.7793915
+  localCenter: {x: -3.91, y: 2.08, z: -2.97}
   center: {x: 0, y: 0, z: 0}
   globalCenter: {x: 0, y: 0, z: 0}

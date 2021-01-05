@@ -33,10 +33,7 @@ namespace ColliderAddon
         
         private void OnValidate()
         {
-            if (OnColliderInfoChanged != null)
-            {
-                OnColliderInfoChanged();
-            }
+            OnColliderInfoChanged?.Invoke();
         }
     }
 }

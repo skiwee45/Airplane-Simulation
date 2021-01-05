@@ -82,7 +82,8 @@ namespace ColliderAddon
                 }
                 
                 //name to use for ColliderInfo and ExtendedCollider
-                var colliderName = childCollider.GetType().Name + " #" + (colliders.Count + 1);
+                var colliderType = childCollider.GetType();
+                var colliderName = colliderType.Name + " #" + (colliders.Count(thisCollider => thisCollider.collider.GetType() == colliderType) + 1);
 
                 //create new colliderInfo
                 var newColliderInfo = ScriptableObjectUtil.CreateScriptableObjectInstance<ColliderInfo>

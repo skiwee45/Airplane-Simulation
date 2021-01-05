@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af88aad5609d486aabeb1071479f8742, type: 3}
-  m_Name: ColliderInfo_-1306
+  m_Name: ColliderInfo_WheelCollider #2
   m_EditorClassIdentifier: 
   type: 0
-  importance: 31
+  importance: 0
   minimumMass: 0
-  maximumMass: 2.7793915
-  localCenter: {x: -3.91, y: 2.08, z: -2.97}
+  maximumMass: 0
+  localCenter: {x: 0, y: 0, z: 0}
   center: {x: 0, y: 0, z: 0}
   globalCenter: {x: 0, y: 0, z: 0}

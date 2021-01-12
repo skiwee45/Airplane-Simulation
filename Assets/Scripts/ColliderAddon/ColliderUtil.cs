@@ -44,6 +44,32 @@ namespace ColliderAddon
             }
             return center;
         }
+        
+        public static float GetColliderDensity(Collider collider, float mass)
+        {
+            var volume = GetRigidBodyVolume(collider.attachedRigidbody);
+            return mass / volume;
+        }
+
+        public static float GetColliderDensity(Collider collider)
+        {
+            var rb = collider.attachedRigidbody;
+            return GetColliderDensity(collider, rb.mass);
+        }
+        
+        public static float GetColliderMass(Collider collider)
+        {
+            return GetColliderMass(collider, GetColliderDensity(collider));
+        }
+
+        public static float GetColliderMass(Collider collider, float density)
+        {
+            if (collider is WheelCollider)
+            {
+                return GetColliderVolume(collider);
+            }
+            return GetColliderVolume(collider) * density;
+        }
     
         public static float GetColliderVolume(Collider collider)
         {

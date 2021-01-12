@@ -24,8 +24,25 @@ namespace ColliderAddon
         private string colliderInfoFolderPath = "Assets/Scripts/ColliderInfo";
 
         [SerializeField] 
-        private float defaultDensity = 50f; //when density changes density in extended colliders does not change
+        [OnValueChanged("ChangeDefaultMass")]
+        [OnValueChanged("UpdateExtendedColliderDensity")]
+        private float defaultMass;
+        private void ChangeDefaultMass() => defaultDensity = ColliderUtil.GetColliderDensity(colliders[0].collider, defaultMass);
+        public float DefaultMass => defaultMass;
+        
+        [SerializeField] 
+        [OnValueChanged("ChangeDefaultDensity")]
+        [OnValueChanged("UpdateExtendedColliderDensity")]
+        private float defaultDensity;
+        private void ChangeDefaultDensity() => defaultMass = ColliderUtil.GetRigidBodyVolume(_rb) * defaultDensity;
         public float DefaultDensity => defaultDensity;
+        private void UpdateExtendedColliderDensity()
+        {
+            foreach (var thisCollider in colliders)
+            {
+                thisCollider.density = defaultDensity;
+            }
+        }
 
         [SerializeField]
         [ReorderableList] 
@@ -39,12 +56,21 @@ namespace ColliderAddon
         private Vector3 _centerOfMass;
         private Rigidbody _rb;
 
-        private void OnValidate()
+        private void Start()
         {
-            //update COM
-            UpdateCenterOfMass();
-            //generate dictionary
-            _extendedColliderDictionary = colliders.ToDictionary(extendedCollider => extendedCollider.collider);
+            _extendedColliderDictionary = colliders.ToDictionary(thisCollider => thisCollider.collider);
+            foreach (var thisCollider in colliders)
+            {
+                thisCollider.Start(this);
+            }
+        }
+
+        private void Update()
+        {
+            if (!Application.isPlaying)
+            {
+                UpdateCenterOfMass();
+            }
         }
     
         //gizmos
@@ -59,6 +85,10 @@ namespace ColliderAddon
             {
                 DrawColliderInfoGizmos(extendedCollider);
             }
+            
+            //COM
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawWireSphere(_centerOfMass, 0.2f);
         }
 
         private void DrawColliderInfoGizmos(ExtendedCollider extendedCollider)
@@ -126,10 +156,16 @@ namespace ColliderAddon
         UpdateCenterOfMass();
         }
         
-        public void UpdateCenterOfMass()
+        private void UpdateCenterOfMass()
         {
             _rb = GetComponent<Rigidbody>();
         
+            //update extendedColliders
+            foreach (var thisCollider in colliders)
+            {
+                thisCollider.EditorTick();
+            }
+            
             //calculations
             _centerOfMass = CalculateCenterOfMass(colliders, out var totalMass);
             Debug.Log("UpdateCOM " + totalMass);
@@ -146,8 +182,8 @@ namespace ColliderAddon
             //get the total mass and weighted center
             foreach (var collider in colliders)
             {
-                totalMass += collider.currentMass;
-                weightedCenter += collider.config.center * collider.currentMass;
+                totalMass += collider.Mass;
+                weightedCenter += collider.Center * collider.Mass;
             }
 
             mass = totalMass;

@@ -1184,44 +1184,72 @@ MonoBehaviour:
       Assembly-CSharp
     _suppressLogs: 0
   colliderInfoFolderPath: Assets/Scripts/ColliderAddon/ColliderInfoConfigs
-  defaultDensity: 50
+  defaultMass: 850
+  defaultDensity: 188.4191
   colliders:
   - name: CapsuleCollider #1
-    currentMass: 38.34864
+    currentMass: 144.51233
+    currentImportance: 17
+    currentCenter: {x: 0, y: 0.83, z: 2.5177004}
     collider: {fileID: 2039777427}
     config: {fileID: 11400000, guid: a1d7db686ff0acc46bed821bac450621, type: 2}
+    density: 188.4191
   - name: CapsuleCollider #2
-    currentMass: 96.15823
+    currentMass: 362.36093
+    currentImportance: 43
+    currentCenter: {x: 0, y: 1.0300001, z: 0.7746282}
     collider: {fileID: 2039777426}
     config: {fileID: 11400000, guid: 47ceb7184e9ada547afd962bc14176a2, type: 2}
+    density: 188.4191
   - name: CapsuleCollider #3
-    currentMass: 21.569283
+    currentMass: 81.281296
+    currentImportance: 10
+    currentCenter: {x: 0, y: 1.2622832, z: -1.8149605}
     collider: {fileID: 2039777425}
     config: {fileID: 11400000, guid: a4cacf24307d3e84aaac8e699a93e3b2, type: 2}
+    density: 188.4191
   - name: BoxCollider #1
-    currentMass: 69.48479
+    currentMass: 261.8452
+    currentImportance: 31
+    currentCenter: {x: 0, y: 1.91, z: 0.8467889}
     collider: {fileID: 2039777424}
     config: {fileID: 11400000, guid: 6928b18d5c848ad469408bb526ffeabf, type: 2}
+    density: 188.4191
   - name: BoxCollider #2
     currentMass: 0
+    currentImportance: 0
+    currentCenter: {x: 0, y: 1.4000001, z: -3.517}
     collider: {fileID: 2039777423}
     config: {fileID: 11400000, guid: 7bdbcdf28aff15547951e635232fd8dc, type: 2}
+    density: 188.4191
   - name: BoxCollider #3
     currentMass: 0
+    currentImportance: 0
+    currentCenter: {x: 0, y: 2.11, z: -3.947}
     collider: {fileID: 2039777422}
     config: {fileID: 11400000, guid: 837fe3b7a0af9cc4a8a40272fd58f263, type: 2}
+    density: 188.4191
   - name: WheelCollider #1
-    currentMass: 250
+    currentMass: 5
+    currentImportance: 100
+    currentCenter: {x: 0, y: -0.050000004, z: 0.303}
     collider: {fileID: 2039777421}
     config: {fileID: 11400000, guid: 9c43c0f5936b8524895d1f98ecb3ccd3, type: 2}
+    density: 188.4191
   - name: WheelCollider #2
-    currentMass: 250
+    currentMass: 5
+    currentImportance: 100
+    currentCenter: {x: 0, y: -0.050000004, z: 0.303}
     collider: {fileID: 2039777420}
     config: {fileID: 11400000, guid: 3d9b1e5a83c47c440b8db81f4bdec1fc, type: 2}
+    density: 188.4191
   - name: WheelCollider #3
-    currentMass: 250
+    currentMass: 5
+    currentImportance: 100
+    currentCenter: {x: 0, y: -0.050000004, z: 0.303}
     collider: {fileID: 2039777419}
     config: {fileID: 11400000, guid: 65226d2ae504a5142a50aad6290c5965, type: 2}
+    density: 188.4191
 --- !u!114 &865007362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1234,34 +1262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0c65f779c64013bccff2c06ee1a86d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &865007363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865007360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7519daccb6c741c0b3fe7707c7a006b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 100
-  healthPercent: 0
---- !u!114 &865007364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865007360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 968d2b6c1f69acb47a7f4e82197ea3ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageMultiplier: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,7 +1793,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: 0.07988782, y: -0.000000004287847, z: 3.4364508e-10, w: 0.9968039}
+  m_LocalRotation: {x: 0.07988782, y: 0.000000004287847, z: -3.4364508e-10, w: 0.9968039}
   m_LocalPosition: {x: 0, y: 5.17, z: -15.303}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3019,12 +3019,12 @@ PrefabInstance:
     - target: {fileID: 1606550434539446808, guid: abc181f9d2e85794098b243487833011,
         type: 3}
       propertyPath: thrust
-      value: 2700
+      value: 2100
       objectReference: {fileID: 0}
     - target: {fileID: 1606550434539446809, guid: abc181f9d2e85794098b243487833011,
         type: 3}
       propertyPath: m_Mass
-      value: 975.5609
+      value: 864.99976
       objectReference: {fileID: 0}
     - target: {fileID: 1606550434539446809, guid: abc181f9d2e85794098b243487833011,
         type: 3}

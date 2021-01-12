@@ -52,7 +52,7 @@ namespace ColliderAddon
             var total = 0f;
             foreach (var colliderWeight in dict)
             {
-                var importance = _colliderManager.ExtendedColliderDictionary[colliderWeight.Key].config.importance;
+                var importance = _colliderManager.ExtendedColliderDictionary[colliderWeight.Key].Importance;
                 var weight = colliderWeight.Value;
                 total += importance * weight;
             }

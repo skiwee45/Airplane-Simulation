@@ -40,7 +40,7 @@ namespace ColliderAddon
 
         public void SetMass(ExtendedCollider extendedCollider, float mass)
         {
-            extendedCollider.CurrentMass = mass;
+            extendedCollider.Mass = mass;
         }
     }
     

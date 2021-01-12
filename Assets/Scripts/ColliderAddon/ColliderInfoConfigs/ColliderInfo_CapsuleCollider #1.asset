@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ColliderInfo_CapsuleCollider #1
   m_EditorClassIdentifier: 
   type: 0
-  importance: 0
+  startingImportance: 17
   minimumMass: 0
-  maximumMass: 0
-  localCenter: {x: 0, y: 0, z: 0}
-  center: {x: 0, y: 0, z: 0}
-  globalCenter: {x: -3.6699183e-14, y: 0.16607253, z: -0.30300015}
+  startingMass: 144.51233
+  maximumMass: 289.02466
+  localCenter: {x: 0, y: 1, z: 2.2147005}
+  globalCenter: {x: 0, y: 1, z: 2.2147005}

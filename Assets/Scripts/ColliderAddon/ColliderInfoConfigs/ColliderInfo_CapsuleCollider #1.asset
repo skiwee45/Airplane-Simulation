@@ -18,4 +18,4 @@ MonoBehaviour:
   maximumMass: 0
   localCenter: {x: 0, y: 0, z: 0}
   center: {x: 0, y: 0, z: 0}
-  globalCenter: {x: 0, y: 0, z: 0}
+  globalCenter: {x: -3.6699183e-14, y: 0.16607253, z: -0.30300015}

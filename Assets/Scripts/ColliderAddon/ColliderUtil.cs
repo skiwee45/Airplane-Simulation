@@ -8,7 +8,7 @@ namespace ColliderAddon
         {
             var colliderVolume = GetColliderVolume(collider);
             var totalVolume = GetRigidBodyVolume(collider.attachedRigidbody);
-            var percentage = colliderVolume / totalVolume * 100;
+            var percentage = colliderVolume / totalVolume;
             return percentage;
         }
 

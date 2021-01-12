@@ -7,8 +7,11 @@ namespace ColliderAddon
     [RequireComponent(typeof(ColliderManager))]
     public class CollisionDamage : MonoBehaviour
     {
-        private ColliderManager _colliderManager;
+        [SerializeField]
+        private float damageMultiplier;
         
+        private ColliderManager _colliderManager;
+
         //event
         public delegate void OnCollision(float damage);
         public event OnCollision OnCollisionDamage;
@@ -22,7 +25,7 @@ namespace ColliderAddon
         {
             var forceVariable = CalculateCrashForce(collision);
             var importanceVariable = CalculateImpactImportance(collision);
-            var damage = forceVariable * importanceVariable / 100f; //importanceVariable is out of 100
+            var damage = forceVariable * importanceVariable / 100f * damageMultiplier; //importanceVariable is out of 100
             OnCollisionDamage?.Invoke(damage);
         }
 
@@ -33,14 +36,15 @@ namespace ColliderAddon
         
             //calculate the how much it hit each collider
             var dict = new Dictionary<Collider, int>();
-            foreach (var thisCollider in contacts.Select(contact => contact.thisCollider))
+            foreach (var thisContact in contacts)
             {
-                if (dict.ContainsKey(thisCollider))
+                var thisCollide = thisContact.thisCollider;
+                if (dict.ContainsKey(thisCollide))
                 {
-                    dict[thisCollider] += 1;
+                    dict[thisCollide] += 1;
                 } else
                 {
-                    dict.Add(thisCollider, 1);
+                    dict.Add(thisCollide, 1);
                 }
             }
         

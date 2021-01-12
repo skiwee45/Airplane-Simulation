@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace ColliderAddon
 {
+    [ExecuteAlways]
     [CreateAssetMenu(fileName = "New Collider Info", menuName = "Scriptable Object/Collider Information", order = 0)]
     public class ColliderInfo : ScriptableObject
     {
@@ -30,10 +31,20 @@ namespace ColliderAddon
         //event
         public delegate void OnFieldsChanged();
         public event OnFieldsChanged OnColliderInfoChanged;
-        
+
         private void OnValidate()
         {
+            Debug.Log("ColliderInfo Updated");
             OnColliderInfoChanged?.Invoke();
+        }
+
+        public void OnSetup(ExtendedCollider parent)
+        {
+            if (OnColliderInfoChanged == null)
+            {
+                OnColliderInfoChanged += parent.OnUpdateFields;
+                Debug.Log("ColliderInfo => ExtendedCollider Event Connected");
+            }
         }
     }
 }

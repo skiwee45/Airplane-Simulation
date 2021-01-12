@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Aircraft_Physics.Core.Scripts.CenterOfMass;
 using NaughtyAttributes;
+using NUnit.Framework;
 using UnityEngine;
 
 namespace ColliderAddon
@@ -10,6 +14,17 @@ namespace ColliderAddon
         //fields
         public string name;
         public float currentMass;
+
+        public float CurrentMass
+        {
+            get => currentMass;
+            set
+            {
+                currentMass = value;
+                OnUpdateFields();
+            } 
+        }
+
         public Collider collider;
         public ColliderInfo config;
         
@@ -21,50 +36,34 @@ namespace ColliderAddon
         //event
         public delegate void OnFieldsChanged();
         public event OnFieldsChanged OnExtendedColliderChanged;
-        public ExtendedCollider(string name, ColliderInfo config, Collider collider, ColliderManager parent, float density, bool defaultValues)
+        public ExtendedCollider(string name, ColliderInfo config, Collider collider, ColliderManager parent)
         {
             this.name = name;
             this.config = config;
             this.collider = collider;
+            config.OnSetup(this);
             _transform = collider.transform;
             _parent = parent;
             _parentTransform = parent.transform;
-            _density = density;
-            this.config.OnColliderInfoChanged += OnUpdateFields;
-            
-            //default it if wanted
-            if (defaultValues)
-            {
-                SetDefaultValues();
-            }
-        }
-        
-        public void OnCreate()
-        {
-            OnExtendedColliderChanged += _parent.UpdateCenterOfMass;
-            config.OnColliderInfoChanged += OnUpdateFields;
+            _density = parent.DefaultDensity;
+            SetDefaultValues();
         }
 
-        public void OnDelete()
-        {
-            OnExtendedColliderChanged -= _parent.UpdateCenterOfMass;
-            config.OnColliderInfoChanged -= OnUpdateFields;
-        }
-        
-        private void OnUpdateFields()
+        public void OnUpdateFields()
         {
             Debug.Log("Fields Updated");
-            OnExtendedColliderChanged?.Invoke();
             _transform = collider.transform;
             config.importance = Mathf.Clamp(config.importance, 0, 100);
             currentMass = Mathf.Clamp(currentMass, config.minimumMass, config.maximumMass);
             config.globalCenter = _transform.TransformPoint(config.localCenter);
             config.center = _parentTransform.InverseTransformPoint(config.globalCenter);
+            _parent.UpdateCenterOfMass();
         }
     
         public void SetDefaultValues()
         {
-            config.importance = Mathf.RoundToInt(ColliderUtil.GetColliderVolumePercent(collider));
+            config.type = AirplaneColliderType.Wings;
+            config.importance = Mathf.RoundToInt(ColliderUtil.GetColliderVolumePercent(collider) * 100f);
         
             config.minimumMass = 0f;
             currentMass = ColliderUtil.GetColliderVolume(collider) * _density;

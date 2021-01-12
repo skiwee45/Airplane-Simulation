@@ -1184,43 +1184,84 @@ MonoBehaviour:
       Assembly-CSharp
     _suppressLogs: 0
   colliderInfoFolderPath: Assets/Scripts/ColliderAddon/ColliderInfoConfigs
+  defaultDensity: 50
   colliders:
-  - name: ColliderInfo #-1300
-    currentMass: 0.76697284
+  - name: CapsuleCollider #1
+    currentMass: 38.34864
     collider: {fileID: 2039777427}
-    config: {fileID: 11400000, guid: b464ad42e8dedf64e9fbdd6ada70307a, type: 2}
-  - name: ColliderInfo #-1302
-    currentMass: 1.9231646
+    config: {fileID: 11400000, guid: a1d7db686ff0acc46bed821bac450621, type: 2}
+  - name: CapsuleCollider #2
+    currentMass: 96.15823
     collider: {fileID: 2039777426}
-    config: {fileID: 11400000, guid: 2756a87afcf928f4fbf63d84659c46ca, type: 2}
-  - name: ColliderInfo #-1304
-    currentMass: 0.43138564
+    config: {fileID: 11400000, guid: 47ceb7184e9ada547afd962bc14176a2, type: 2}
+  - name: CapsuleCollider #3
+    currentMass: 21.569283
     collider: {fileID: 2039777425}
-    config: {fileID: 11400000, guid: a85308fd8fa9d6942bc64673237f4941, type: 2}
-  - name: ColliderInfo #-1306
-    currentMass: 1.3896958
+    config: {fileID: 11400000, guid: a4cacf24307d3e84aaac8e699a93e3b2, type: 2}
+  - name: BoxCollider #1
+    currentMass: 69.48479
     collider: {fileID: 2039777424}
-    config: {fileID: 11400000, guid: 549b11904bb84154aa0b32e37b2ccdb4, type: 2}
-  - name: ColliderInfo #-1308
+    config: {fileID: 11400000, guid: 6928b18d5c848ad469408bb526ffeabf, type: 2}
+  - name: BoxCollider #2
     currentMass: 0
     collider: {fileID: 2039777423}
-    config: {fileID: 11400000, guid: 51a00e9435dea4a439222e1d9961c21e, type: 2}
-  - name: ColliderInfo #-1310
+    config: {fileID: 11400000, guid: 7bdbcdf28aff15547951e635232fd8dc, type: 2}
+  - name: BoxCollider #3
     currentMass: 0
     collider: {fileID: 2039777422}
-    config: {fileID: 11400000, guid: d0632527daa8b1341b3592217f7f75b1, type: 2}
-  - name: ColliderInfo #-1344
-    currentMass: 5
+    config: {fileID: 11400000, guid: 837fe3b7a0af9cc4a8a40272fd58f263, type: 2}
+  - name: WheelCollider #1
+    currentMass: 250
     collider: {fileID: 2039777421}
-    config: {fileID: 11400000, guid: 39c79fa0fc0aa7641ada352715d1f1af, type: 2}
-  - name: ColliderInfo #-1346
-    currentMass: 5
+    config: {fileID: 11400000, guid: 9c43c0f5936b8524895d1f98ecb3ccd3, type: 2}
+  - name: WheelCollider #2
+    currentMass: 250
     collider: {fileID: 2039777420}
-    config: {fileID: 11400000, guid: 23c02be7d9da5a84f920dd877032a2da, type: 2}
-  - name: ColliderInfo #-1348
-    currentMass: 5
+    config: {fileID: 11400000, guid: 3d9b1e5a83c47c440b8db81f4bdec1fc, type: 2}
+  - name: WheelCollider #3
+    currentMass: 250
     collider: {fileID: 2039777419}
-    config: {fileID: 11400000, guid: 00488db3d855a8b4f93834e1f0b3032a, type: 2}
+    config: {fileID: 11400000, guid: 65226d2ae504a5142a50aad6290c5965, type: 2}
+--- !u!114 &865007362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865007360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c0c65f779c64013bccff2c06ee1a86d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &865007363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865007360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7519daccb6c741c0b3fe7707c7a006b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 100
+  healthPercent: 0
+--- !u!114 &865007364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865007360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 968d2b6c1f69acb47a7f4e82197ea3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMultiplier: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,7 +1793,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: 0.07988782, y: 0.000000004287847, z: -3.4364508e-10, w: 0.9968039}
+  m_LocalRotation: {x: 0.07988782, y: -0.000000004287847, z: 3.4364508e-10, w: 0.9968039}
   m_LocalPosition: {x: 0, y: 5.17, z: -15.303}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2975,10 +3016,20 @@ PrefabInstance:
       propertyPath: minMass
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1606550434539446808, guid: abc181f9d2e85794098b243487833011,
+        type: 3}
+      propertyPath: thrust
+      value: 2700
+      objectReference: {fileID: 0}
     - target: {fileID: 1606550434539446809, guid: abc181f9d2e85794098b243487833011,
         type: 3}
       propertyPath: m_Mass
-      value: 19.511219
+      value: 975.5609
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606550434539446809, guid: abc181f9d2e85794098b243487833011,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1606550434539446810, guid: abc181f9d2e85794098b243487833011,
         type: 3}
@@ -3060,6 +3111,11 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 411891823}
+    - target: {fileID: 1606550434539447269, guid: abc181f9d2e85794098b243487833011,
+        type: 3}
+      propertyPath: maxFuel
+      value: 53
+      objectReference: {fileID: 0}
     - target: {fileID: 1606550434576788580, guid: abc181f9d2e85794098b243487833011,
         type: 3}
       propertyPath: mass

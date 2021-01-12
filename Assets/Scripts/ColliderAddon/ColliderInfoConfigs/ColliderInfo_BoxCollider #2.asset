@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af88aad5609d486aabeb1071479f8742, type: 3}
   m_Name: ColliderInfo_BoxCollider #2
   m_EditorClassIdentifier: 
-  type: 0
   importance: 0
   minimumMass: 0
   maximumMass: 0

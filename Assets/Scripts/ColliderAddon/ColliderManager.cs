@@ -10,28 +10,30 @@ using TypeReferences;
 
 namespace ColliderAddon
 {
+    [ExecuteAlways]
     [RequireComponent(typeof(Rigidbody))]
     public class ColliderManager : MonoBehaviour
     {
         [SerializeField]
         [Inherits(typeof(Enum))]
         private TypeReference typeEnum;
+        public TypeReference TypeEnum => typeEnum;
         
         [SerializeField]
         [Label("ColliderInfo Folder Path")]
         private string colliderInfoFolderPath = "Assets/Scripts/ColliderInfo";
 
         [SerializeField] 
-        private float defaultDensity = 50f;
-        
+        private float defaultDensity = 50f; //when density changes density in extended colliders does not change
+        public float DefaultDensity => defaultDensity;
+
         [SerializeField]
         [ReorderableList] 
         private List<ExtendedCollider> colliders;
         public List<ExtendedCollider> Colliders => colliders;
     
         //dictionary to make finding colliders easy
-        [SerializeField]
-        private Dictionary<Collider, ExtendedCollider> _extendedColliderDictionary = new Dictionary<Collider, ExtendedCollider>(0);
+        private Dictionary<Collider, ExtendedCollider> _extendedColliderDictionary;
         public Dictionary<Collider, ExtendedCollider> ExtendedColliderDictionary => _extendedColliderDictionary;
         
         private Vector3 _centerOfMass;
@@ -39,7 +41,6 @@ namespace ColliderAddon
 
         private void OnValidate()
         {
-            Debug.Log("Manager Updated");
             //update COM
             UpdateCenterOfMass();
             //generate dictionary
@@ -50,12 +51,13 @@ namespace ColliderAddon
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
-            if (colliders.Count > 0)
+            if (colliders.Count == 0)
             {
-                foreach (var extendedCollider in colliders)
-                {
-                    DrawColliderInfoGizmos(extendedCollider);
-                }
+                return;
+            }
+            foreach (var extendedCollider in colliders)
+            {
+                DrawColliderInfoGizmos(extendedCollider);
             }
         }
 
@@ -67,14 +69,14 @@ namespace ColliderAddon
         [Button("Generate ExtendedColliders")]
         private void GenerateExtendedCollider()
         { 
+            // TypeReference MyEnumType = typeEnum;
+            // var temp = Enum.GetValues(MyEnumType).Cast<Enum>();
+            // Debug.Log("Enum Values: " + temp.Count() + temp.FirstOrDefault());
+            
             //find the colliders that need to be added
             var allColliders = GetComponentsInChildren<Collider>();
             foreach (var childCollider in allColliders)
             {
-                // Debug.Log("Collider ID: " + colliderID);
-                // var temp = childCollider.attachedRigidbody?.mass;
-                // Debug.Log("Nullable Type Test" + temp);
-                // Debug.Log("dict: " + _extendedColliderDictionary);
                 if (_extendedColliderDictionary.ContainsKey(childCollider) || 
                     childCollider.attachedRigidbody == null)
                 {
@@ -91,14 +93,12 @@ namespace ColliderAddon
 
                 //create new extendedCollider
                 var newExtendedCollider =  new ExtendedCollider(
-                    colliderName, newColliderInfo, childCollider, this, defaultDensity, true);
+                    colliderName, newColliderInfo, childCollider, this);
                 colliders.Add(newExtendedCollider);
-                newExtendedCollider.OnCreate();
                 
                 //update dictionary
                 _extendedColliderDictionary.Add(childCollider, newExtendedCollider);
             }
-            //Debug.Log("Colliders List" + colliders);
             UpdateCenterOfMass();
         }
     
@@ -118,15 +118,14 @@ namespace ColliderAddon
         {
             foreach (var extendedCollider in colliders)
             {
-                extendedCollider.OnDelete();
                 ScriptableObjectUtil.DeleteScriptableObjectInstance(extendedCollider.config);
             }
-            colliders.RemoveAll((ExtendedCollider item) => true);
+            colliders.RemoveAll((item) => true);
             _extendedColliderDictionary.Clear();
 
         UpdateCenterOfMass();
         }
-    
+        
         public void UpdateCenterOfMass()
         {
             _rb = GetComponent<Rigidbody>();

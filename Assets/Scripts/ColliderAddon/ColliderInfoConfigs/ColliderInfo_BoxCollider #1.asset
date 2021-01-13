@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: ColliderInfo_BoxCollider #1
   m_EditorClassIdentifier: 
   type: 0
-  startingImportance: 0
-  minimumMass: 0
-  maximumMass: 0
-  localCenter: {x: 0, y: 0, z: 0}
-  globalCenter: {x: 0, y: 0, z: 0}
+  startingImportance: 90
+  minimumMass: 107
+  startingMass: 107
+  maximumMass: 250
+  localCenter: {x: 0, y: 2.08, z: 0.54378885}
+  globalCenter: {x: 0, y: 2.25, z: 0.24078885}

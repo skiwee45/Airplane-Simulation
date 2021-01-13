@@ -7,6 +7,7 @@ using NUnit.Framework;
 using RotaryHeart.Lib.SerializableDictionary;
 using UnityEngine;
 using TypeReferences;
+using UnityEditor;
 
 namespace ColliderAddon
 {
@@ -27,7 +28,19 @@ namespace ColliderAddon
         [OnValueChanged("ChangeDefaultMass")]
         [OnValueChanged("UpdateExtendedColliderDensity")]
         private float defaultMass;
-        private void ChangeDefaultMass() => defaultDensity = ColliderUtil.GetColliderDensity(colliders[0].collider, defaultMass);
+        private void ChangeDefaultMass()
+        {
+            var massWithoutWheels = defaultMass;
+            foreach (var thisCollider in colliders)
+            {
+                if (thisCollider.collider is WheelCollider wheelCollider)
+                {
+                    massWithoutWheels -= wheelCollider.mass;
+                }
+            }
+            defaultDensity = ColliderUtil.GetColliderDensity(colliders[0].collider, massWithoutWheels);
+        }
+
         public float DefaultMass => defaultMass;
         
         [SerializeField] 
@@ -88,12 +101,12 @@ namespace ColliderAddon
             
             //COM
             Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(_centerOfMass, 0.2f);
+            Gizmos.DrawWireSphere(transform.TransformPoint(_centerOfMass), 0.2f);
         }
 
         private void DrawColliderInfoGizmos(ExtendedCollider extendedCollider)
         {
-            Gizmos.DrawWireSphere(extendedCollider.config.globalCenter, 0.1f);
+            Gizmos.DrawWireSphere(transform.TransformPoint(extendedCollider.Center), 0.1f);
         }
 
         [Button("Generate ExtendedColliders")]
@@ -156,16 +169,19 @@ namespace ColliderAddon
         UpdateCenterOfMass();
         }
         
-        private void UpdateCenterOfMass()
+        public void UpdateCenterOfMass()
         {
             _rb = GetComponent<Rigidbody>();
         
             //update extendedColliders
-            foreach (var thisCollider in colliders)
+            if (!Application.isPlaying)
             {
-                thisCollider.EditorTick();
+                foreach (var thisCollider in colliders)
+                {
+                    thisCollider.EditorTick();
+                }
             }
-            
+
             //calculations
             _centerOfMass = CalculateCenterOfMass(colliders, out var totalMass);
             Debug.Log("UpdateCOM " + totalMass);

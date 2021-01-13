@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af88aad5609d486aabeb1071479f8742, type: 3}
   m_Name: ColliderInfo_CapsuleCollider #1
   m_EditorClassIdentifier: 
-  type: 0
-  startingImportance: 17
-  minimumMass: 0
-  startingMass: 144.51233
-  maximumMass: 289.02466
+  type: 7
+  startingImportance: 90
+  minimumMass: 195
+  startingMass: 195
+  maximumMass: 240
   localCenter: {x: 0, y: 1, z: 2.2147005}
-  globalCenter: {x: 0, y: 1, z: 2.2147005}
+  globalCenter: {x: 0, y: 1.17, z: 1.9117005}

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public static class AircraftGizmos
 {
-    [DrawGizmo(GizmoType.InSelectionHierarchy | GizmoType.NotInSelectionHierarchy)]
+    [DrawGizmo(GizmoType.NotInSelectionHierarchy | GizmoType.InSelectionHierarchy)]
     public static void AircraftPhysicsGizmos(AircraftPhysics phys, GizmoType gizmoType)
     {
         AircraftPhysicsDisplaySettings settings = AircraftPhysicsDisplaySettings.Instance;

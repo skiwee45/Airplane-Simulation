@@ -19,11 +19,12 @@ namespace ColliderAddon
         {
             var collidersToChange =
                 _colliderManager.Colliders.Where(thisCollider =>
-                    thisCollider.config.type.ToString() == colliderType.ToString());
+                    thisCollider.config.type == colliderType);
             foreach (var extendedCollider in collidersToChange)
             {
                 SetMass(extendedCollider, extendedCollider.config.minimumMass + extraMass);
             }
+            _colliderManager.UpdateCenterOfMass();
         }
         
         
@@ -31,11 +32,12 @@ namespace ColliderAddon
         {
             var collidersToChange =
                 _colliderManager.Colliders.Where(thisCollider =>
-                    thisCollider.config.type.ToString() == colliderType.ToString());
+                    thisCollider.config.type == colliderType);
             foreach (var extendedCollider in collidersToChange)
             {
                 SetMass(extendedCollider, mass);
             }
+            _colliderManager.UpdateCenterOfMass();
         }
 
         public void SetMass(ExtendedCollider extendedCollider, float mass)

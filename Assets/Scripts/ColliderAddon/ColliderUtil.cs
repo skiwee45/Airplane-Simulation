@@ -11,6 +11,21 @@ namespace ColliderAddon
             var percentage = colliderVolume / totalVolume;
             return percentage;
         }
+        
+        public static float GetColliderMassPercent(Collider collider)
+        {
+            var colliderMass = GetColliderMass(collider);
+            var totalMass = collider.attachedRigidbody.mass;
+            var percentage = colliderMass / totalMass;
+            return percentage;
+        }
+        
+        public static float GetColliderMassPercent(float colliderMass, Rigidbody rb)
+        {
+            var totalMass = rb.mass;
+            var percentage = colliderMass / totalMass;
+            return percentage;
+        }
 
         public static float GetRigidBodyVolume(Rigidbody rb)
         {

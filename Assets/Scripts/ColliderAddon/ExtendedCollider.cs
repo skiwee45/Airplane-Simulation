@@ -14,16 +14,16 @@ namespace ColliderAddon
         //fields
         public string name;
         [SerializeField]
-        [BoxGroup("Runtime")]
         [ReadOnly]
+        [BoxGroup("Runtime Info")]
         private float currentMass;
         [SerializeField]
-        [BoxGroup("Runtime")]
         [ReadOnly]
+        [BoxGroup("Runtime Info")]
         private float currentImportance;
         [SerializeField]
-        [BoxGroup("Runtime")]
         [ReadOnly]
+        [BoxGroup("Runtime Info")]
         private Vector3 currentCenter;
         public float Mass
         {
@@ -44,7 +44,7 @@ namespace ColliderAddon
         public Collider collider;
         public ColliderInfo config;
         
-        private Vector3 _transform;
+        private Transform _transform;
         private ColliderManager _parent;
         public float density;
         
@@ -53,34 +53,37 @@ namespace ColliderAddon
             this.name = name;
             this.config = config;
             this.collider = collider;
-            _transform = collider.transform.position;
+            _transform = collider.transform;
             _parent = parent;
             density = parent.DefaultDensity;
+            config.type = AirplaneColliderType.Wings;
             SetDefaultValues();
         }
         
         public void SetDefaultValues()
         {
-            config.type = AirplaneColliderType.Wings;
-            config.startingImportance = Mathf.RoundToInt(ColliderUtil.GetColliderVolumePercent(collider) * 100f);
-            Importance = config.startingImportance;
-
-            config.minimumMass = 0f;
             config.startingMass = ColliderUtil.GetColliderMass(collider, density);
-            config.maximumMass = config.startingMass * 2f;
-            Mass = config.startingMass;
+            config.minimumMass = Mathf.Clamp(config.minimumMass, Mathf.NegativeInfinity, config.startingMass);
+            config.maximumMass = Mathf.Clamp(config.maximumMass, config.startingMass, Mathf.Infinity);
+            
+            config.startingImportance = Mathf.RoundToInt(ColliderUtil.GetColliderMassPercent(config.startingMass, collider.attachedRigidbody) * 100f);
         
             config.localCenter = ColliderUtil.GetColliderCenter(collider);
-            CalculateCenter();
+            
+            EditorTick();
         }
 
         public void Start(ColliderManager parent)
         {
             _parent = parent;
+            _transform = collider.transform;
         }
 
         public void EditorTick()
         {
+            //clamp editor variables
+            config.startingMass = Mathf.Clamp(config.startingMass, config.minimumMass, config.maximumMass);
+            
             //update runtime variables
             Importance = config.startingImportance;
             Mass = config.startingMass;
@@ -89,7 +92,7 @@ namespace ColliderAddon
         
         private void CalculateCenter()
         {
-            config.globalCenter = _transform + config.localCenter;
+            config.globalCenter = _transform.TransformPoint(config.localCenter);
             Center = _parent.transform.InverseTransformPoint(config.globalCenter);
         }
     }

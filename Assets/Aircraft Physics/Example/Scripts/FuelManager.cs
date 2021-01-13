@@ -31,7 +31,7 @@ namespace Aircraft_Physics.Example.Scripts
         [Label("Kg / Person")]
         private float kgPerPerson = 75f;
 
-        private float _fuelPercent;
+        private int _fuelPercent;
 
         private AirplaneController _controller;
         private MassChanger _massChanger;
@@ -41,7 +41,6 @@ namespace Aircraft_Physics.Example.Scripts
         {
             _massChanger = GetComponent<MassChanger>();
             _controller = GetComponent<AirplaneController>();
-            _fuelPercent = 1f;
         }
 
         // Update is called once per frame
@@ -55,8 +54,8 @@ namespace Aircraft_Physics.Example.Scripts
             }
             fuel = Mathf.Clamp(fuel, 0f, maxFuel);
             //add fuel mass
-            var newFuelPercent = (float) Math.Round(FuelToPercent(fuel) * 100f, 2);
-            var oldFuelPercent = (float) Math.Round(_fuelPercent * 100f, 2);
+            var newFuelPercent = FuelToPercent();
+            var oldFuelPercent = _fuelPercent;
             if (newFuelPercent != oldFuelPercent)
             {
                 _fuelPercent = newFuelPercent;
@@ -65,15 +64,17 @@ namespace Aircraft_Physics.Example.Scripts
             }
 
             //start / stop plane
-            if (fuel <= 0)
+            if (fuel <= 0 && _controller.enabled) //stop plane
             {
                 _controller.enabled = false;
-                _massChanger.SetMassAboveMinimum(AirplaneColliderType.FuselageFront, kgPerPerson);
+                _massChanger.SetMassAboveMinimum(AirplaneColliderType.FuselageFront, 0);
             } else if (Input.GetKeyDown(KeyCode.R)) //enable if has fuel, disabled, and want to start engine
             {
-                _controller.enabled = !_controller.enabled;
+                var controllerEnabled = _controller.enabled;
+                controllerEnabled = !controllerEnabled;
+                _controller.enabled = controllerEnabled;
                 _massChanger.SetMassAboveMinimum(AirplaneColliderType.FuselageFront,
-                    _controller.enabled ? kgPerPerson : 0);
+                    controllerEnabled ? kgPerPerson : 0);
             }
         }
 
@@ -87,9 +88,9 @@ namespace Aircraft_Physics.Example.Scripts
             return thrust * fuelPerMilePerThrust * Time.deltaTime;
         }
         
-        private int FuelToPercent(float inputFuel)
+        private int FuelToPercent()
         {
-            return Mathf.RoundToInt(inputFuel / maxFuel);
+            return Mathf.RoundToInt((fuel / maxFuel) * 100f);
         }
     }
 }

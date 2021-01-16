@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Aircraft_Physics.Example.Scripts
@@ -7,14 +10,27 @@ namespace Aircraft_Physics.Example.Scripts
     {
         //Calculation parameters
         private float _targetHeading;
-        private float _targetTurningSpeed;
-        private float _currentTurnSpeed;
+        
+        private float _targetTurnSpeed;
+        private float _averagedTurnSpeed;
+        [SerializeField]
+        private float secondsToAverage = 0.5f;
+        private List<float> _turnSpeeds;
+        
         private float _targetPlaneRoll;
         private float _currentRoll;
+        
         private float _aileronOutput;
+        
+        //Settings
+        [SerializeField] 
+        private float slowDownHeadingError = 20f;
+        [SerializeField] 
+        private float maximumTurnSpeed = 3f;
 
         //PID parameters
-        [SerializeField] private PidConfig rollPidConfig, aileronPidConfig;
+        [SerializeField] 
+        private PidConfig rollPidConfig, aileronPidConfig;
 
         //PID object
         private PidController _aileronPidController, _rollPid;
@@ -36,6 +52,9 @@ namespace Aircraft_Physics.Example.Scripts
             _controller = GetComponent<AirplaneController>();
             _aircraft = GetComponent<Rigidbody>();
             
+            //setup turnspeeds
+            _turnSpeeds = new List<float>(new float[Mathf.RoundToInt(secondsToAverage / Time.fixedDeltaTime)]);
+
             //disable
             enabled = false;
         }
@@ -56,11 +75,14 @@ namespace Aircraft_Physics.Example.Scripts
             _aileronPidController.SetConstants(aileronPidConfig.gainProportional, aileronPidConfig.gainIntegral, aileronPidConfig.gainDerivative, aileronPidConfig.outputMin, aileronPidConfig.outputMax);
             _rollPid.SetConstants(rollPidConfig.gainProportional, rollPidConfig.gainIntegral, rollPidConfig.gainDerivative, rollPidConfig.outputMin, rollPidConfig.outputMax);
 
+            //turnspeed average calculation
+            _averagedTurnSpeed = GETAveragedTurnSpeed();
+            
             //calculations
-            _targetTurningSpeed = CalcTargetTurnSpeed(CalcHeadingError(_targetHeading, GETHeading()));
+            _targetTurnSpeed = CalcTargetTurnSpeed(CalcHeadingError(_targetHeading, GETHeading()));
 
             //run double PID controllers
-            _targetPlaneRoll = PID_Update(_rollPid, _targetTurningSpeed, GETTurnSpeed(), Time.fixedDeltaTime);
+            _targetPlaneRoll = PID_Update(_rollPid, _targetTurnSpeed, _averagedTurnSpeed, Time.fixedDeltaTime);
             _aileronOutput = PID_Update(_aileronPidController, _targetPlaneRoll, GETRoll(), Time.fixedDeltaTime);
             
             //put final output into controller
@@ -88,11 +110,25 @@ namespace Aircraft_Physics.Example.Scripts
         /// </summary>
         /// <param name="headingError"></param>
         /// <returns>target turn speed in degrees per second: between 6 d/s and 1 d/s</returns>
-        private static float CalcTargetTurnSpeed(float headingError)
+        private float CalcTargetTurnSpeed(float headingError)
         {
-            var targetSpeed = 0.005f * Mathf.Pow(headingError, 2);
-            targetSpeed = Mathf.Clamp(targetSpeed, 1, 4);
-            return (headingError >= 0 ? targetSpeed : -targetSpeed);
+            // var targetSpeed = 0.005f * Mathf.Pow(headingError, 2);
+            // targetSpeed = Mathf.Clamp(targetSpeed, 1, 4);
+            // return (headingError >= 0 ? targetSpeed : -targetSpeed);
+            Debug.Log("Heading Error: " + headingError);
+
+            float targetSpeedPercent; //positive means right, negative means left
+            if (Mathf.Abs(headingError) <= slowDownHeadingError)
+            {
+                Debug.Log("Slowing down: " + headingError);
+                targetSpeedPercent = headingError / slowDownHeadingError;
+            }
+            else
+            {
+                targetSpeedPercent = headingError >= 0 ? 1 : -1;
+            }
+
+            return maximumTurnSpeed * targetSpeedPercent;
         }
 
         /// <summary>
@@ -129,10 +165,19 @@ namespace Aircraft_Physics.Example.Scripts
             return _aircraft.rotation.eulerAngles.y;
         }
         
-        public float GETTurnSpeed()
+        private float GETTurnSpeed()
         {
-            _currentTurnSpeed = _aircraft.angularVelocity.y * Mathf.Rad2Deg;
-            return (float) System.Math.Round(_currentTurnSpeed, 2); //rounds it to a float with 2 decimal points
+            var currentTurnSpeed = _aircraft.angularVelocity.y * Mathf.Rad2Deg;
+            return (float) Math.Round(currentTurnSpeed, 2); //rounds it to a float with 2 decimal points
+        }
+
+        public float GETAveragedTurnSpeed()
+        {
+            Debug.Log(_turnSpeeds.Count);
+            _turnSpeeds.RemoveAt(0);
+            _turnSpeeds.Add(GETTurnSpeed());
+            var average = _turnSpeeds.Average();
+            return average;
         }
         
         public float GETRoll()

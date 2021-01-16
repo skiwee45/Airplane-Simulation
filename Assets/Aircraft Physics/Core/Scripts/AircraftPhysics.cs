@@ -32,7 +32,7 @@ namespace Aircraft_Physics.Core.Scripts
             BiVector3 forceAndTorqueThisFrame = 
                 CalculateAerodynamicForces(rb.velocity, rb.angularVelocity, Vector3.zero, 1.2f, rb.worldCenterOfMass);
 
-            Vector3 velocityPrediction = PredictVelocity(forceAndTorqueThisFrame.p
+            Vector3 velocityPrediction = PredictVelocity(forceAndTorqueThisFrame.p 
                                                          + transform.forward * (thrust * thrustPercent) + Physics.gravity * rb.mass);
             Vector3 angularVelocityPrediction = PredictAngularVelocity(forceAndTorqueThisFrame.q);
 
@@ -74,8 +74,8 @@ namespace Aircraft_Physics.Core.Scripts
             angularVelocityChangeInDiagonalSpace.y = torqueInDiagonalSpace.y / rb.inertiaTensor.y;
             angularVelocityChangeInDiagonalSpace.z = torqueInDiagonalSpace.z / rb.inertiaTensor.z;
 
-            return rb.angularVelocity + Time.fixedDeltaTime * PREDICTION_TIMESTEP_FRACTION
-                                                            * (inertiaTensorWorldRotation * angularVelocityChangeInDiagonalSpace);
+            return rb.angularVelocity + Time.fixedDeltaTime * PREDICTION_TIMESTEP_FRACTION *
+                (inertiaTensorWorldRotation * angularVelocityChangeInDiagonalSpace);
         }
 
 #if UNITY_EDITOR

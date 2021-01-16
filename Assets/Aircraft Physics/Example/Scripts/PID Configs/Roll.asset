@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bef2b079b3143d2a791ac36a09f264f, type: 3}
   m_Name: Roll
   m_EditorClassIdentifier: 
-  gainProportional: 0.5
-  gainIntegral: 0.15
+  gainProportional: 2
+  gainIntegral: 1
   gainDerivative: 0.05
   outputMax: 45
   outputMin: -45

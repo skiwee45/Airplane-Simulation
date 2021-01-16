@@ -1793,7 +1793,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188863487}
-  m_LocalRotation: {x: 0.07988782, y: 0.000000004287847, z: -3.4364508e-10, w: 0.9968039}
+  m_LocalRotation: {x: 0.07988782, y: -0.000000004287847, z: 3.4364508e-10, w: 0.9968039}
   m_LocalPosition: {x: 0, y: 5.17, z: -15.303}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3121,6 +3121,21 @@ PrefabInstance:
       propertyPath: slider
       value: 
       objectReference: {fileID: 411891823}
+    - target: {fileID: 1606550434539447268, guid: abc181f9d2e85794098b243487833011,
+        type: 3}
+      propertyPath: maximumTurnSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606550434539447268, guid: abc181f9d2e85794098b243487833011,
+        type: 3}
+      propertyPath: secondsToAverage
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606550434539447268, guid: abc181f9d2e85794098b243487833011,
+        type: 3}
+      propertyPath: slowDownHeadingError
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1606550434539447269, guid: abc181f9d2e85794098b243487833011,
         type: 3}
       propertyPath: maxFuel
@@ -3163,6 +3178,7 @@ PrefabInstance:
     - {fileID: 1606550434434916082, guid: abc181f9d2e85794098b243487833011, type: 3}
     - {fileID: 1606550434576788580, guid: abc181f9d2e85794098b243487833011, type: 3}
     - {fileID: 1606550434382072419, guid: abc181f9d2e85794098b243487833011, type: 3}
+    - {fileID: 5412402978147947739, guid: abc181f9d2e85794098b243487833011, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: abc181f9d2e85794098b243487833011, type: 3}
 --- !u!146 &2039777419 stripped
 WheelCollider:

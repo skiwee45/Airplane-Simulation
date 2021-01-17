@@ -15,11 +15,6 @@ GameObject:
   - component: {fileID: 1606550433604650755}
   - component: {fileID: 1606550433604650752}
   - component: {fileID: 1606550433604650753}
-  - component: {fileID: 1606550433604650758}
-  - component: {fileID: 1606550433604650759}
-  - component: {fileID: 1606550433604650756}
-  - component: {fileID: 1606550433604650757}
-  - component: {fileID: 1606550433604650810}
   m_Layer: 0
   m_Name: Collision
   m_TagString: Untagged
@@ -125,96 +120,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0, y: 1.34, z: 1}
   m_Center: {x: 0, y: 2.28, z: -4.25}
---- !u!114 &1606550433604650758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606550433604650808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  airplaneColliderType: 0
-  mass: 1000
-  minMass: 194
-  maxMass: 1000
-  <LocalCenter>k__BackingField: {x: 0, y: 0, z: 0}
-  assignedCollider: {fileID: 1606550433604650764}
---- !u!114 &1606550433604650759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606550433604650808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  airplaneColliderType: 0
-  mass: 240
-  minMass: 180
-  maxMass: 330
-  <LocalCenter>k__BackingField: {x: 0, y: 0, z: 0}
-  assignedCollider: {fileID: 1606550433604650754}
---- !u!114 &1606550433604650756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606550433604650808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  airplaneColliderType: 0
-  mass: 107
-  minMass: 107
-  maxMass: 230
-  <LocalCenter>k__BackingField: {x: 0, y: 0, z: 0}
-  assignedCollider: {fileID: 1606550433604650755}
---- !u!114 &1606550433604650757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606550433604650808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  airplaneColliderType: 0
-  mass: 28
-  minMass: 28
-  maxMass: 28
-  <LocalCenter>k__BackingField: {x: 0, y: 0, z: 0}
-  assignedCollider: {fileID: 1606550433604650754}
---- !u!114 &1606550433604650810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606550433604650808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  airplaneColliderType: 0
-  mass: 30
-  minMass: 30
-  maxMass: 30
-  <LocalCenter>k__BackingField: {x: 0, y: 0, z: 0}
-  assignedCollider: {fileID: 1606550433604650752}
 --- !u!1 &1606550433647599391
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +419,6 @@ GameObject:
   - component: {fileID: 1606550434382072416}
   - component: {fileID: 1606550434382072429}
   - component: {fileID: 1606550434382072418}
-  - component: {fileID: 1606550434382072419}
   m_Layer: 0
   m_Name: Gear_Front
   m_TagString: Untagged
@@ -579,24 +483,6 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
---- !u!114 &1606550434382072419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606550434382072417}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  airplaneColliderType: 0
-  mass: 13.5
-  minMass: 13.5
-  maxMass: 0
-  <LocalCenter>k__BackingField: {x: 0, y: 0, z: 0}
-  assignedCollider: {fileID: 1606550434382072418}
 --- !u!1 &1606550434434916080
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +494,6 @@ GameObject:
   - component: {fileID: 1606550434434916083}
   - component: {fileID: 1606550434434916092}
   - component: {fileID: 1606550434434916093}
-  - component: {fileID: 1606550434434916082}
   m_Layer: 0
   m_Name: Gear_Left
   m_TagString: Untagged
@@ -624,7 +509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606550434434916080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.185, y: 0.277, z: 0.2}
+  m_LocalPosition: {x: -1.185, y: 0.277, z: 0.428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1606550433604650811}
@@ -673,24 +558,6 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
---- !u!114 &1606550434434916082
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606550434434916080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  airplaneColliderType: 0
-  mass: 20.5
-  minMass: 20.5
-  maxMass: 0
-  <LocalCenter>k__BackingField: {x: 0, y: 0, z: 0}
-  assignedCollider: {fileID: 1606550434434916093}
 --- !u!1 &1606550434437115703
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,10 +620,10 @@ GameObject:
   - component: {fileID: 1606550434539447269}
   - component: {fileID: 1606550434539446810}
   - component: {fileID: 1606550434539447268}
-  - component: {fileID: 1606550434539447271}
-  - component: {fileID: 1606550434539447265}
-  - component: {fileID: 1606550434539447270}
-  - component: {fileID: 5412402978147947739}
+  - component: {fileID: 865007361}
+  - component: {fileID: 865007362}
+  - component: {fileID: 865007363}
+  - component: {fileID: 865007364}
   m_Layer: 0
   m_Name: Aircraft
   m_TagString: Untagged
@@ -790,7 +657,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606550434539446815}
   serializedVersion: 2
-  m_Mass: 850
+  m_Mass: 642
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -872,6 +739,8 @@ MonoBehaviour:
   fuel: 0
   maxFuel: 53
   fuelPerMilePerThrust: -0.004608
+  kgPerGallonOfFuel: 2.5
+  kgPerPerson: 75
 --- !u!114 &1606550434539446810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,10 +769,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bea5473c5927408bbd5f221db08b2fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  secondsToAverage: 0.25
+  slowDownHeadingError: 30
+  maximumTurnSpeed: 3
   rollPidConfig: {fileID: 11400000, guid: 9a7ed759fa8a52440862c89d8500dd56, type: 2}
   aileronPidConfig: {fileID: 11400000, guid: 0ffade1d594e0b640887ae5dc5bd79a3, type: 2}
   slider: {fileID: 0}
---- !u!114 &1606550434539447271
+--- !u!114 &865007361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -912,11 +784,83 @@ MonoBehaviour:
   m_GameObject: {fileID: 1606550434539446815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7127f462c784b074eb77ab7190e9be26, type: 3}
+  m_Script: {fileID: 11500000, guid: e7f5dae4efc644bda2ed9e45792d4fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colliderDensities: []
---- !u!114 &1606550434539447265
+  typeEnum:
+    GuidAssignmentFailed: 0
+    GUID: 
+    TypeNameAndAssembly: Aircraft_Physics.Core.Scripts.CenterOfMass.AirplaneColliderType,
+      Assembly-CSharp
+    _suppressLogs: 0
+  colliderInfoFolderPath: Assets/Scripts/ColliderAddon/ColliderInfoConfigs
+  defaultMass: 850
+  defaultDensity: 185.09406
+  colliders:
+  - name: Engine
+    currentMass: 195
+    currentImportance: 90
+    currentCenter: {x: 0, y: 0.99999994, z: 2.2147005}
+    collider: {fileID: 1606550433604650764}
+    config: {fileID: 11400000, guid: a1d7db686ff0acc46bed821bac450621, type: 2}
+    density: 185.09406
+  - name: Fuselage Front
+    currentMass: 225
+    currentImportance: 100
+    currentCenter: {x: 0, y: 1.2, z: 0.7}
+    collider: {fileID: 1606550433604650765}
+    config: {fileID: 11400000, guid: 47ceb7184e9ada547afd962bc14176a2, type: 2}
+    density: 185.09406
+  - name: Fuselage Back
+    currentMass: 30
+    currentImportance: 35
+    currentCenter: {x: 0, y: 1.4322832, z: -2.1179605}
+    collider: {fileID: 1606550433604650754}
+    config: {fileID: 11400000, guid: a4cacf24307d3e84aaac8e699a93e3b2, type: 2}
+    density: 185.09406
+  - name: Wings
+    currentMass: 107
+    currentImportance: 90
+    currentCenter: {x: 0, y: 2.08, z: 0.54378885}
+    collider: {fileID: 1606550433604650755}
+    config: {fileID: 11400000, guid: 6928b18d5c848ad469408bb526ffeabf, type: 2}
+    density: 185.09406
+  - name: Elevators
+    currentMass: 15
+    currentImportance: 25
+    currentCenter: {x: 0, y: 1.57, z: -3.8200002}
+    collider: {fileID: 1606550433604650752}
+    config: {fileID: 11400000, guid: 7bdbcdf28aff15547951e635232fd8dc, type: 2}
+    density: 185.09406
+  - name: Rudder
+    currentMass: 15
+    currentImportance: 10
+    currentCenter: {x: 0, y: 2.28, z: -4.25}
+    collider: {fileID: 1606550433604650753}
+    config: {fileID: 11400000, guid: 837fe3b7a0af9cc4a8a40272fd58f263, type: 2}
+    density: 185.09406
+  - name: Front Wheel
+    currentMass: 15
+    currentImportance: 0
+    currentCenter: {x: 0, y: 0.23100002, z: 2.1}
+    collider: {fileID: 1606550434382072418}
+    config: {fileID: 11400000, guid: 9c43c0f5936b8524895d1f98ecb3ccd3, type: 2}
+    density: 185.09406
+  - name: Left Wheel
+    currentMass: 20
+    currentImportance: 0
+    currentCenter: {x: -1.185, y: 0.397, z: 0.428}
+    collider: {fileID: 1606550434434916093}
+    config: {fileID: 11400000, guid: 3d9b1e5a83c47c440b8db81f4bdec1fc, type: 2}
+    density: 185.09406
+  - name: Right Wheel
+    currentMass: 20
+    currentImportance: 0
+    currentCenter: {x: 1.185, y: 0.397, z: 0.428}
+    collider: {fileID: 1606550434576788583}
+    config: {fileID: 11400000, guid: 65226d2ae504a5142a50aad6290c5965, type: 2}
+    density: 185.09406
+--- !u!114 &865007362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -925,11 +869,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1606550434539446815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b0a1aeb9a2c43da9b61fd9bd8803f32, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c0c65f779c64013bccff2c06ee1a86d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dontDestroyOnLoad: 0
---- !u!114 &1606550434539447270
+--- !u!114 &865007363
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -938,10 +881,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1606550434539446815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55938fb1577dd4ad3af7e994048c86f6, type: 3}
+  m_Script: {fileID: 11500000, guid: 7519daccb6c741c0b3fe7707c7a006b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5412402978147947739
+  health: 0
+  maxHealth: 100
+  healthPercent: 0
+--- !u!114 &865007364
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -950,9 +896,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1606550434539446815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5acd978a2c1e4b944bb24e84ac39c7c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 968d2b6c1f69acb47a7f4e82197ea3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageMultiplier: 0.0001
 --- !u!1 &1606550434576788634
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,7 +911,6 @@ GameObject:
   - component: {fileID: 1606550434576788581}
   - component: {fileID: 1606550434576788582}
   - component: {fileID: 1606550434576788583}
-  - component: {fileID: 1606550434576788580}
   m_Layer: 0
   m_Name: Gear_Right
   m_TagString: Untagged
@@ -980,7 +926,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1606550434576788634}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.185, y: 0.27700004, z: 0.2}
+  m_LocalPosition: {x: 1.185, y: 0.27700004, z: 0.428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1606550433604650811}
@@ -1029,24 +975,6 @@ WheelCollider:
     m_AsymptoteValue: 0.75
     m_Stiffness: 1
   m_Enabled: 1
---- !u!114 &1606550434576788580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606550434576788634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47347ba0898a48ad8da9ec4e04dce66e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  airplaneColliderType: 0
-  mass: 20.5
-  minMass: 20.5
-  maxMass: 0
-  <LocalCenter>k__BackingField: {x: 0, y: 0, z: 0}
-  assignedCollider: {fileID: 1606550434576788583}
 --- !u!1 &1606550434761447489
 GameObject:
   m_ObjectHideFlags: 0

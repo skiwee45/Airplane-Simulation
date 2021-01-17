@@ -17,7 +17,7 @@ namespace Health
         private float healthPercent;
         public virtual float HealthPercent => healthPercent;
 
-        private void Awake()
+        protected void Awake()
         {
             health = maxHealth;
             healthPercent = 100;

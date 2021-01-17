@@ -1,4 +1,5 @@
-﻿using ColliderAddon;
+﻿using System;
+using ColliderAddon;
 using UnityEngine;
 
 namespace Health
@@ -8,9 +9,14 @@ namespace Health
     {
         private CollisionDamage _collisionDamage;
 
-        private void Start()
+        private new void Awake()
         {
+            base.Awake();
             _collisionDamage = GetComponent<CollisionDamage>();
+        }
+
+        private void OnEnable()
+        {
             _collisionDamage.OnCollisionDamage += TakeDamage;
         }
 

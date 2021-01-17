@@ -112,15 +112,9 @@ namespace Aircraft_Physics.Example.Scripts
         /// <returns>target turn speed in degrees per second: between 6 d/s and 1 d/s</returns>
         private float CalcTargetTurnSpeed(float headingError)
         {
-            // var targetSpeed = 0.005f * Mathf.Pow(headingError, 2);
-            // targetSpeed = Mathf.Clamp(targetSpeed, 1, 4);
-            // return (headingError >= 0 ? targetSpeed : -targetSpeed);
-            Debug.Log("Heading Error: " + headingError);
-
             float targetSpeedPercent; //positive means right, negative means left
             if (Mathf.Abs(headingError) <= slowDownHeadingError)
             {
-                Debug.Log("Slowing down: " + headingError);
                 targetSpeedPercent = headingError / slowDownHeadingError;
             }
             else
@@ -173,7 +167,6 @@ namespace Aircraft_Physics.Example.Scripts
 
         public float GETAveragedTurnSpeed()
         {
-            Debug.Log(_turnSpeeds.Count);
             _turnSpeeds.RemoveAt(0);
             _turnSpeeds.Add(GETTurnSpeed());
             var average = _turnSpeeds.Average();

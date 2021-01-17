@@ -184,7 +184,6 @@ namespace ColliderAddon
 
             //calculations
             _centerOfMass = CalculateCenterOfMass(colliders, out var totalMass);
-            Debug.Log("UpdateCOM " + totalMass);
 
             //set COM and Mass
             _rb.mass = totalMass;

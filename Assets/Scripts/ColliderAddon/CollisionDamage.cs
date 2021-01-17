@@ -21,11 +21,12 @@ namespace ColliderAddon
             _colliderManager = GetComponent<ColliderManager>();
         }
 
-        private void OnCollisionStay(Collision collision)
+        private void OnCollisionEnter(Collision collision)
         {
             var forceVariable = CalculateCrashForce(collision);
             var importanceVariable = CalculateImpactImportance(collision);
             var damage = forceVariable * importanceVariable / 100f * damageMultiplier; //importanceVariable is out of 100
+            Debug.Log("\tForce: " + forceVariable + "\tImportance: " + importanceVariable + "\tDamage: " + damage);
             OnCollisionDamage?.Invoke(damage);
         }
 
@@ -38,13 +39,19 @@ namespace ColliderAddon
             var dict = new Dictionary<Collider, int>();
             foreach (var thisContact in contacts)
             {
-                var thisCollide = thisContact.thisCollider;
-                if (dict.ContainsKey(thisCollide))
+                var thisCollider = thisContact.thisCollider;
+                if (thisCollider == null)
                 {
-                    dict[thisCollide] += 1;
+                    Debug.Log("Null" + thisContact.point);
+                    continue;
+                }
+                Debug.Log("Name: " + thisCollider + "\tID" + thisCollider.GetInstanceID() + "\tPoint Of Contact: " + thisContact.point);
+                if (dict.ContainsKey(thisCollider))
+                {
+                    dict[thisCollider] += 1;
                 } else
                 {
-                    dict.Add(thisCollide, 1);
+                    dict.Add(thisCollider, 1);
                 }
             }
         
@@ -56,7 +63,8 @@ namespace ColliderAddon
                 var weight = colliderWeight.Value;
                 total += importance * weight;
             }
-            var average = total / numberOfContacts;
+
+            var average = total / dict.Values.ToList().Sum();
             return average;
         }
 

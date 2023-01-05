@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Aircraft_Physics.Core.Scripts.CenterOfMass;
 using NaughtyAttributes;
-using NUnit.Framework;
 using UnityEngine;
 
 namespace ColliderAddon
